@@ -1,0 +1,6 @@
+# Configuring the watchword extension
+plugin.tx_watchwords_pi1 {
+  url = {$plugin.tx_watchwords_pi1.url}
+  templateFile = {$plugin.tx_watchwords_pi1.file.templateFile}
+  standard = Sorry, no data could be fetched!
+}

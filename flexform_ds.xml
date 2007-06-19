@@ -1,0 +1,108 @@
+<T3DataStructure>
+  <sheets>
+	<sDEF>
+	  <ROOT>
+		<TCEforms>
+			<sheetTitle>LLL:EXT:watchwords/locallang.php:pi1_flexform.general</sheetTitle>
+		</TCEforms>
+	    <type>array</type>
+	    <el>
+		  <tx_watchwords_language>
+			  <TCEforms>
+				<label>LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language</label>
+				<config>
+					<type>select</type>
+					<items type="array">
+						<numIndex index="0" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.default</numIndex>
+							<numIndex index="1"></numIndex>
+						</numIndex>
+						<numIndex index="1" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.AF</numIndex>
+							<numIndex index="1">af</numIndex>
+						</numIndex>						
+						<numIndex index="2" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.AR</numIndex>
+							<numIndex index="1">ar</numIndex>
+						</numIndex>
+						<numIndex index="3" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.CS</numIndex>
+							<numIndex index="1">cs</numIndex>
+						</numIndex>
+						<numIndex index="4" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.DE</numIndex>
+							<numIndex index="1">de</numIndex>
+						</numIndex>
+						<numIndex index="5" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.EN</numIndex>
+							<numIndex index="1">en</numIndex>
+						</numIndex>
+						<numIndex index="6" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.ES</numIndex>
+							<numIndex index="1">es</numIndex>
+						</numIndex>
+						<numIndex index="7" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.FR</numIndex>
+							<numIndex index="1">fr</numIndex>
+						</numIndex>
+						<numIndex index="8" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.IT</numIndex>
+							<numIndex index="1">it</numIndex>
+						</numIndex>
+						<numIndex index="9" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.NL</numIndex>
+							<numIndex index="1">nl</numIndex>
+						</numIndex>
+						<numIndex index="10" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.NO</numIndex>
+							<numIndex index="1">no</numIndex>
+						</numIndex>
+						<numIndex index="11" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.PT</numIndex>
+							<numIndex index="1">pt</numIndex>
+						</numIndex>
+						<numIndex index="12" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.RO</numIndex>
+							<numIndex index="1">ro</numIndex>
+						</numIndex>
+						<numIndex index="13" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.RU</numIndex>
+							<numIndex index="1">ru</numIndex>
+						</numIndex>
+						<numIndex index="14" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.TR</numIndex>
+							<numIndex index="1">tr</numIndex>
+						</numIndex>
+						<numIndex index="15" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.VI</numIndex>
+							<numIndex index="1">vi</numIndex>
+						</numIndex>
+						<numIndex index="16" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.ZH-CN</numIndex>
+							<numIndex index="1">zh-CN</numIndex>
+						</numIndex>
+						<numIndex index="17" type="array">
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_language.I.ZH-ZW</numIndex>
+							<numIndex index="1">zh-TW</numIndex>
+						</numIndex>
+					</items>
+					<maxitems>1</maxitems>
+					<multiple>0</multiple>
+				</config>
+			  </TCEforms>
+		  </tx_watchwords_language>
+		  <tx_watchwords_date_offset>
+			  <TCEforms>
+				<label>LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_date_offset</label>
+				<config>
+					<type>input</type>
+					<size>2</size>
+					<max>2</max>
+				</config>
+			  </TCEforms>
+		  </tx_watchwords_date_offset>
+	    </el>
+	  </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>
