@@ -1,0 +1,10 @@
+a:2:{s:4:"meta";a:3:{s:5:"title";s:20:"Watchwords Extension";s:5:"descr";s:93:"This extension adds a new content element which will get a new christian watchword every day.";s:7:"options";a:2:{s:10:"usageCount";N;s:19:"includeCodeAbstract";N;}}s:5:"files";a:1:{s:14:"MD5_67ac469a4a";a:4:{s:8:"filename";s:31:"pi1/class.tx_watchwords_pi1.php";s:8:"filesize";i:8030;s:6:"header";a:5:{s:4:"text";s:54:"
+
+Class for the functions of the watchwords-extension
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:49:"@author David Bruehlmeier <typo3@bruehlmeier.com>";i:1;s:14:"@package TYPO3";i:2;s:25:"@subpackage tx_watchwords";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:41:"David Bruehlmeier <typo3@bruehlmeier.com>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:14:"tx_watchwords ";}}}s:3:"DAT";a:2:{i:1;a:5:{s:6:"header";s:46:"class tx_watchwords_pi1 extends tslib_pibase {";s:5:"class";i:1;s:11:"parentClass";s:17:"tx_watchwords_pi1";s:4:"cDat";a:5:{s:4:"text";s:54:"
+
+Class for the functions of the watchwords-extension
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:49:"@author David Bruehlmeier <typo3@bruehlmeier.com>";i:1;s:14:"@package TYPO3";i:2;s:25:"@subpackage tx_watchwords";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:41:"David Bruehlmeier <typo3@bruehlmeier.com>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:14:"tx_watchwords ";}}}s:6:"atLine";i:38;}i:3;a:7:{s:6:"header";s:32:"function main($content, $conf) {";s:11:"parentClass";s:17:"tx_watchwords_pi1";s:4:"cDat";a:3:{s:4:"text";s:28:"
+
+This is the main function
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:48:"$content: The normal content-variable. Not used.";}i:1;a:2:{i:0;s:5:"array";i:1;s:29:"$conf: TS-Configuration array";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:24:"Returns the watchword(s)";}}s:7:"content";s:0:"";s:12:"content_size";i:6195;s:13:"content_lines";i:179;s:6:"atLine";i:51;}}}}}
