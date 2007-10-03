@@ -42,17 +42,18 @@ class tx_watchwords_tslibfe {
 		
 			// Check if the current page contains a watchwords plugin
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('uid,pid,list_type', 'tt_content', 'pid='.$reference->id.' AND list_type=\'watchwords_pi1\''.$reference->sys_page->enableFields('tt_content'),'','','1');
-		if ($res) $rec = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+		if ($res) {
 		
-			// Get the cache of the current page
-		if (is_array($rec))		{
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('id,page_id,tstamp', 'cache_pages', 'page_id='.$reference->id);
-			if ($res) $rec = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+				// Get the cache of the current page
+				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('id,page_id,tstamp', 'cache_pages', 'page_id='.$reference->id);
+				if ($res) {
+						$rec = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+
+						// If the cached page is not from today, force to reload the cache
+						$today = mktime(0,0,0,date('m'),date('d'),date('Y'));
+						if ($rec['tstamp'] < $today) $params['disableAcquireCacheData'] = true;
+				}
 		}
-		
-			// If the cached page is not from today, force to reload the cache
-		$today = mktime(0,0,0,date('m'),date('d'),date('Y'));
-		if ($rec['tstamp'] < $today) $params['disableAcquireCacheData'] = true;
 	}
 }
 
