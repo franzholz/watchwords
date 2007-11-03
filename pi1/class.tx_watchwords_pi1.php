@@ -56,9 +56,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
-		
-			// Disable caching (only for debugging)
-		#$GLOBALS['TSFE']->no_cache = true;
+
 
 			// Get the TypoScript of the extension and initialize FlexForms
 		$this->extConf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_watchwords_pi1.'];
@@ -183,13 +181,21 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	
 	/**
 	 * Get the watchwords in the following order
-	 *  - Prio 1: Use the testFile
-	 *  - Prio 2: Get the XML-File through HTTP
+	 *  - Prio 1: First see if there is watchwords for this day and language cached already
+	 *  - Prio 2: Use the testFile
+	 *  - Prio 3: Get the XML-File through HTTP
 	 *
 	 * @return	string		Watchwords as an XML string
 	*/
 	function getWatchwords($language, $fetchDate)		{
 		$xmlString = '';
+
+		$hashKey = md5('tx_watchwords_storeKey:'.serialize(array($language, $fetchDate)));
+		// see if there is a cached XML 
+		$cachedXmlString = $GLOBALS['TSFE']->sys_page->getHash($hashKey, 0);
+		if ($cachedXmlString) {
+			return $cachedXmlString;
+		}
 
 		if ($this->extConf['testFile']) {
 			$xmlString = t3lib_div::getURL($this->extConf['testFile']);
@@ -200,8 +206,12 @@ class tx_watchwords_pi1 extends tslib_pibase {
 				'&month='.date('n', $fetchDate).
 				'&day='.date('j', $fetchDate);
 			$xmlString = t3lib_div::getURL($url);
+
+			// if the xml is fetched from remote, store it in the cache
+			if ($xmlString)	{
+				$GLOBALS['TSFE']->sys_page->storeHash($hashKey, $xmlString, 'tx_watchwords');
+			}
 		}
-		
 		return $xmlString;
 	}
 	
