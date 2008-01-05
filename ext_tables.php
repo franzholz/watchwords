@@ -54,7 +54,15 @@ t3lib_extMgm::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_
 
 	// Add FlexForm field to tt_content
 t3lib_div::loadTCA('tt_content');
-t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_pi1', 'FILE:EXT:watchwords/flexform_ds.xml');
+
+	// Depending on the watchwords provider, add different flex-form fields
+$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['watchwords']);
+if ($extConf['watchwords_provider'] == 'biblegateway_com') {
+	t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_pi1', 'FILE:EXT:watchwords/flexform_ds_biblegateway.xml');
+} else {
+	t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_pi1', 'FILE:EXT:watchwords/flexform_ds.xml');
+}
+
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY.'_pi1']='pi_flexform';
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi1']='layout,select_key,pages,recursive';
 

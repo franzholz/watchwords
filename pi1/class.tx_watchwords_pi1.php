@@ -44,6 +44,9 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	var $extKey = 'watchwords';									// The extension key.
 	var $extConf = '';											// TS-configuration
 	
+	var $losung_de = 'http://www.losung.de/cgi-bin/today.pl?format=XML11';			// URL of losung.de
+	var $biblegateway_com = 'http://www.biblegateway.com/usage/votd/rss/votd.rdf';	// URL of biblegateway.com
+	
 
 	/**
 	 * This is the main function
@@ -57,15 +60,83 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
 
-
 			// Get the TypoScript of the extension and initialize FlexForms
 		$this->extConf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_watchwords_pi1.'];
 		$this->pi_initPIflexForm();
 		
+			// Get the extension configuration
+		$this->confVars = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['watchwords']);
+		
+		if ($this->confVars['watchwords_provider'] == 'biblegateway_com') {
+			$content = $this->getWatchwordsFromBiblegateway();
+		} else {
+			$content = $this->getWatchwordsFromLosung();
+		}
+
+			// Return the content
+		return $this->pi_wrapInBaseClass($content);
+	}
+	
+	function getWatchwordsFromBiblegateway() {
+		
 			// Get the watchwords
-		$language = $this->getLanguage();
-		$fetchDate = $this->getFetchDate();
-		$xmlString = $this->getWatchwords($language, $fetchDate);
+		$xmlString = $this->getWatchwords();
+		
+			// If no watchwords were fetched, return the standard output
+		if (!$xmlString) return $this->standardOutput();
+
+			// Parse the XML
+		$xml = simplexml_load_string($xmlString);
+		$out['copyright'] = $xml->channel->title;
+		$out['license'] = $xml->channel->link;
+		$out['bibleLink'] = $xml->channel->item->guid;
+		$out['verseSource'] = $xml->channel->item->title;
+		
+			// Yes, this is ugly... but it works! :-)
+		$split1 = explode('&ldquo;', $xmlString);
+		$split2 = explode('&rdquo;', $split1[1]);
+		$out['verse'] = $split2[0];
+		
+			// Additional fields
+		$out['date'] = time();
+		
+			// Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
+			// and apply stdWrap to all values
+		foreach ($out as $k=>$v)		{
+			$v = $GLOBALS['TSFE']->csConv(trim($v), 'utf-8');
+			$out[$k] = $this->cObj->stdWrap($v, $this->extConf[$k.'.']);
+		}
+	
+			// Use templateFile or output without templateFile, according to TypoScript settings
+		$content = '';
+		if ($this->extConf['templateFileBiblegateway']) {
+			$template = $this->cObj->fileResource($this->extConf['templateFileBiblegateway']);
+			$globalMarkerArray = array();
+			$globalMarkerArray['###DATE###']   			= $out['date'];
+			$globalMarkerArray['###VERSE###']    		= $out['verse'];
+			$globalMarkerArray['###BIBLE_LINK###']   	= $out['bibleLink'];
+			$globalMarkerArray['###VERSE_SOURCE###']    = $out['verseSource'];
+			$globalMarkerArray['###COPYRIGHT###'] 		= $out['copyright'];
+			$globalMarkerArray['###LICENSE###']   		= $out['license'];
+			$content = $this->cObj->substituteMarkerArray($template, $globalMarkerArray);
+		} else {
+				// Concatenate the strings. Cannot use foreach() here because $out is not in the proper order when using PHP4
+			if ($this->extConf['date'])					$content.= $out['date'];
+			if ($this->extConf['verse'])				$content.= $out['verse'];
+			if ($this->extConf['bibleLink'])			$content.= $out['bibleLink'];
+			if ($this->extConf['verseSource'])			$content.= $out['verseSource'];
+			if ($this->extConf['copyright'])			$content.= $out['copyright'];
+            	// license url MUST always be available
+			$content.= $out['license'];
+		}
+						
+		return $content;
+	}
+	
+	function getWatchwordsFromLosung() {
+			
+			// Get the watchwords
+		$xmlString = $this->getWatchwords();
 		
 			// If no watchwords were fetched, return the standard output
 		if (!$xmlString) return $this->standardOutput();
@@ -121,9 +192,8 @@ class tx_watchwords_pi1 extends tslib_pibase {
             	// license url MUST always be available
 			$content.= $out['license'];
 		}
-
-			// Return the content
-		return $this->pi_wrapInBaseClass($content);
+		
+		return $content;
 	}
 	
 	/**
@@ -133,7 +203,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *  - Prio 3: Language for the current site
 	 *  - Prio 4: Default language (English)
 	 *
-	 * @return	string		Language in which to get the lanuage (2-letter ISO code)
+	 * @return	string		Language in which to get the language (2-letter ISO code)
 	*/
 	function getLanguage()		{
 		$language = '';
@@ -180,6 +250,27 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	}
 	
 	/**
+	 * Determines the bible version (only for biblegateway.com) for which to fetch the watchwords in the following order
+	 *  - Prio 1: Bible version from the current cObj
+	 *  - Prio 2: Bible version from the TypoScript of the extension
+	 *  - Prio 3: No Bible version found, take New International version (31)
+	 *
+	 * @return	integer		Bible version for which to get the watchwords
+	*/
+	function getBibleVersion()		{
+		$bibleVersion = 31;	// New International version
+
+		$piBibleVersion = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_bible_version', 'sDEF');
+		if ($piBibleVersion) {
+			$bibleVersion = $piBibleVersion;
+		} elseif ($this->extConf['bibleVersion']) {
+			$bibleVersion = $this->extConf['bibleVersion'];
+		}
+
+		return $bibleVersion;
+	}
+	
+	/**
 	 * Get the watchwords in the following order
 	 *  - Prio 1: First see if there is watchwords for this day and language cached already
 	 *  - Prio 2: Use the testFile
@@ -187,10 +278,14 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Watchwords as an XML string
 	*/
-	function getWatchwords($language, $fetchDate)		{
+	function getWatchwords()		{
 		$xmlString = '';
+		
+		$language = $this->getLanguage();
+		$fetchDate = $this->getFetchDate();
+		$bibleVersion = $this->getBibleVersion();
 
-		$hashKey = md5('tx_watchwords_storeKey:'.serialize(array($language, $fetchDate)));
+		$hashKey = md5('tx_watchwords_storeKey:'.serialize(array($language, $fetchDate, $bibleVersion)));
 		// see if there is a cached XML 
 		$cachedXmlString = $GLOBALS['TSFE']->sys_page->getHash($hashKey, 0);
 		if ($cachedXmlString) {
@@ -199,12 +294,19 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 		if ($this->extConf['testFile']) {
 			$xmlString = t3lib_div::getURL($this->extConf['testFile']);
-		} elseif ($this->extConf['url']) {
-			$url = $this->extConf['url'].
-				'&lang='.$language.
-				'&year='.date('Y', $fetchDate).
-				'&month='.date('n', $fetchDate).
-				'&day='.date('j', $fetchDate);
+		} else {
+			
+			if ($this->confVars['watchwords_provider'] == 'biblegateway_com') {
+				$urlParams = $bibleVersion ? '?'.$bibleVersion : '';
+				$url = $this->biblegateway_com.$urlParams;
+			} else {
+
+				$url = $this->losung_de.
+					'&lang='.$language.
+					'&year='.date('Y', $fetchDate).
+					'&month='.date('n', $fetchDate).
+					'&day='.date('j', $fetchDate);
+			}
 			$xmlString = t3lib_div::getURL($url);
 
 			// if the xml is fetched from remote, store it in the cache
@@ -212,6 +314,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 				$GLOBALS['TSFE']->sys_page->storeHash($hashKey, $xmlString, 'tx_watchwords');
 			}
 		}
+
 		return $xmlString;
 	}
 	

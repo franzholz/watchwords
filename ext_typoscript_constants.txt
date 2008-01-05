@@ -1,6 +1,6 @@
 plugin.tx_watchwords_pi1 {
-    # cat=plugin.watchwords; type=string; label= URL of www.losung.de: From this URL, the XML file will be fetched. Normally, this constant can be left at its default value.
-  url = http://www.losung.de/cgi-bin/today.pl?format=XML11
-    # cat=plugin.watchwords/file; type=file[html,htm,tmpl,txt]; label= Template File: This is a simple textfile where the layout of the watchwords display is defined with HTML-code. Have a look a at EXT:watchwords/pi1/template.inc for a working example.
+    # cat=plugin.watchwords/file; type=file[html,htm,tmpl,txt]; label= Template File (losung.de): For www.losung.de only: This is a simple textfile where the layout of the watchwords display is defined with HTML-code. Have a look a at EXT:watchwords/pi1/template.inc for a working example.
   file.templateFile = EXT:watchwords/pi1/template.inc
+      # cat=plugin.watchwords/file; type=file[html,htm,tmpl,txt]; label= Template File (biblegateway.com): For www.biblegateway.com only: This is a simple textfile where the layout of the watchwords display is defined with HTML-code. Have a look a at EXT:watchwords/pi1/template.inc for a working example.
+  file.templateFileBiblegateway = EXT:watchwords/pi1/template_biblegateway.inc
 }
