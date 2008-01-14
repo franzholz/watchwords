@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext: "watchwords"
 #
-# Auto generated 05-01-2008 12:53
+# Auto generated 14-01-2008 07:33
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.
@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'This extension adds a new content element which will get a new Christian Watchword (bible verse) every day.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '0.7.1',
+	'version' => '0.7.2',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -41,7 +41,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:27:{s:20:"class.ext_update.php";s:4:"f9c9";s:21:"ext_conf_template.txt";s:4:"0366";s:12:"ext_icon.gif";s:4:"5d27";s:17:"ext_localconf.php";s:4:"78bf";s:15:"ext_php_api.dat";s:4:"faca";s:14:"ext_tables.php";s:4:"0a17";s:28:"ext_typoscript_constants.txt";s:4:"c11b";s:24:"ext_typoscript_setup.txt";s:4:"717a";s:15:"flexform_ds.xml";s:4:"dad2";s:28:"flexform_ds_biblegateway.xml";s:4:"5bfa";s:13:"locallang.php";s:4:"1007";s:28:"locallang_csh_watchwords.php";s:4:"d011";s:12:"doc/TODO.txt";s:4:"31ed";s:14:"doc/manual.sxw";s:4:"ed11";s:35:"inc/class.tx_watchwords_tslibfe.php";s:4:"4d45";s:14:"pi1/ce_wiz.gif";s:4:"b1fc";s:31:"pi1/class.tx_watchwords_pi1.php";s:4:"8f4c";s:39:"pi1/class.tx_watchwords_pi1_wizicon.php";s:4:"9a7f";s:13:"pi1/clear.gif";s:4:"cc11";s:17:"pi1/locallang.php";s:4:"6551";s:16:"pi1/template.inc";s:4:"1014";s:29:"pi1/template_biblegateway.inc";s:4:"b829";s:23:"xml/biblegateway_en.xml";s:4:"be75";s:18:"xml/example_cs.xml";s:4:"af87";s:18:"xml/example_de.xml";s:4:"7954";s:18:"xml/example_en.xml";s:4:"7fb0";s:21:"xml/example_zh-CN.xml";s:4:"b29e";}',
+	'_md5_values_when_last_written' => 'a:27:{s:20:"class.ext_update.php";s:4:"f9c9";s:21:"ext_conf_template.txt";s:4:"0366";s:12:"ext_icon.gif";s:4:"5d27";s:17:"ext_localconf.php";s:4:"78bf";s:15:"ext_php_api.dat";s:4:"faca";s:14:"ext_tables.php";s:4:"0a17";s:28:"ext_typoscript_constants.txt";s:4:"c11b";s:24:"ext_typoscript_setup.txt";s:4:"717a";s:15:"flexform_ds.xml";s:4:"dad2";s:28:"flexform_ds_biblegateway.xml";s:4:"e4cf";s:13:"locallang.php";s:4:"415b";s:28:"locallang_csh_watchwords.php";s:4:"d011";s:12:"doc/TODO.txt";s:4:"31ed";s:14:"doc/manual.sxw";s:4:"ed11";s:35:"inc/class.tx_watchwords_tslibfe.php";s:4:"4d45";s:14:"pi1/ce_wiz.gif";s:4:"b1fc";s:31:"pi1/class.tx_watchwords_pi1.php";s:4:"8f4c";s:39:"pi1/class.tx_watchwords_pi1_wizicon.php";s:4:"9a7f";s:13:"pi1/clear.gif";s:4:"cc11";s:17:"pi1/locallang.php";s:4:"6551";s:16:"pi1/template.inc";s:4:"1014";s:29:"pi1/template_biblegateway.inc";s:4:"b829";s:23:"xml/biblegateway_en.xml";s:4:"be75";s:18:"xml/example_cs.xml";s:4:"af87";s:18:"xml/example_de.xml";s:4:"7954";s:18:"xml/example_en.xml";s:4:"7fb0";s:21:"xml/example_zh-CN.xml";s:4:"b29e";}',
 	'suggests' => array(
 	),
 );
