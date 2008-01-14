@@ -34,8 +34,8 @@
 							<numIndex index="1">22</numIndex>
 						</numIndex>
 						<numIndex index="5" type="array">
-							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.10</numIndex>
-							<numIndex index="1">10</numIndex>
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.11</numIndex>
+							<numIndex index="1">11</numIndex>
 						</numIndex>
 						<numIndex index="6" type="array">
 							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.8</numIndex>
@@ -53,10 +53,6 @@
 							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.9</numIndex>
 							<numIndex index="1">9</numIndex>
 						</numIndex>
-						<numIndex index="10" type="array">
-							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.10</numIndex>
-							<numIndex index="1">10</numIndex>
-						</numIndex>
 						<numIndex index="11" type="array">
 							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.31</numIndex>
 							<numIndex index="1">31</numIndex>
@@ -70,8 +66,8 @@
 							<numIndex index="1">2</numIndex>
 						</numIndex>
 						<numIndex index="14" type="array">
-							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.11</numIndex>
-							<numIndex index="1">11</numIndex>
+							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.10</numIndex>
+							<numIndex index="1">10</numIndex>
 						</numIndex>
 						<numIndex index="15" type="array">
 							<numIndex index="0">LLL:EXT:watchwords/locallang.php:pi1_flexform.tx_watchwords_bible_version.I.69</numIndex>
