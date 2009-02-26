@@ -7,31 +7,12 @@
 
 $LOCAL_LANG = Array (
 	'default' => Array (
-		'list_mode_1' => 'Mode 1',
-		'list_mode_2' => 'Mode 2',
-		'list_mode_3' => 'Mode 3',
-		'back' => 'Back',
-		'submit_button_label' => 'Click here to submit value',
 	),
 	'dk' => Array (
-		'list_mode_1' => 'Visning 1',
-		'list_mode_2' => 'Visning 2',
-		'list_mode_3' => 'Visning 3',
-		'back' => 'Tilbage',
 	),
 	'de' => Array (
-		'list_mode_1' => 'Modus 1',
-		'list_mode_2' => 'Modus 2',
-		'list_mode_3' => 'Modus 3',
-		'back' => 'Zurück',
-		'submit_button_label' => 'Hier klicken, um Werte zu übertragen',
 	),
 	'no' => Array (
-		'list_mode_1' => 'Visning 1',
-		'list_mode_2' => 'Visning 2',
-		'list_mode_3' => 'Visning 3',
-		'back' => 'Tilbake',
-		'submit_button_label' => 'Klikk her for å legge inn',
 	),
 	'it' => Array (
 	),

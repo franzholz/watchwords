@@ -1,3 +1,0 @@
-
-  # cat=basic//30; type=options[losung_de,biblegateway_com]; label= Watchwords Provider: Defines which site provides the watchwords. ----->>>> PLEASE NOTE: Due to licensing issues, the watchwords from www.losung.de will not be available in languages other than German as of 2008. Even the availability in German is unsure. If in doubt, please choose www.biblegateway.com as your watchwords provider or follow the announcements on www.losung.de. Please refer to the manual for further information.
-watchwords_provider = biblegateway_com
