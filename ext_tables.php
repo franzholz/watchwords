@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2005 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2004-2014 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,16 +27,17 @@
  * @author David Bruehlmeier <typo3@bruehlmeier.com>
  */
 
-if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
-
+if (!defined ('TYPO3_MODE')) {
+	die ('Access denied.');
+}
 
 // *************************************
 // *** Add FE Plugin
 // *************************************
 
-if (TYPO3_MODE=='BE')	{
+if (TYPO3_MODE == 'BE') {
 		// Add the frontend content-element
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_watchwords_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY).'pi1/class.tx_watchwords_pi1_wizicon.php';
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_watchwords_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pi1/class.tx_watchwords_pi1_wizicon.php';
 }
 
 
@@ -45,7 +46,7 @@ if (TYPO3_MODE=='BE')	{
 // *************************************
 
 	// Including the FE-Plugin
-t3lib_extMgm::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_type_pi1', $_EXTKEY.'_pi1'),'list_type');
+t3lib_extMgm::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_type_pi1', $_EXTKEY . '_pi1'), 'list_type');
 
 
 // *************************************
@@ -54,10 +55,10 @@ t3lib_extMgm::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_
 
 	// Add FlexForm field to tt_content
 t3lib_div::loadTCA('tt_content');
-t3lib_extMgm::addPiFlexFormValue($_EXTKEY.'_pi1', 'FILE:EXT:watchwords/flexform_ds_biblegateway.xml');
+t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:watchwords/flexform_ds_biblegateway.xml');
 
 
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY.'_pi1']='pi_flexform';
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi1']='layout,select_key,pages,recursive';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key,pages,recursive';
 
 ?>

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2009 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2004-2014 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -28,7 +28,6 @@
 */
 
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
 
 /**
  * Class for the functions of the watchwords-extension.
@@ -43,9 +42,9 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	var $scriptRelPath = 'pi1/class.tx_watchwords_pi1.php';		// Path to this script relative to the extension dir.
 	var $extKey = 'watchwords';									// The extension key.
 	var $extConf = '';											// TS-configuration
-	
+
 	var $biblegateway_com = 'http://www.biblegateway.com/usage/votd/rss/votd.rdf';	// URL of biblegateway.com
-	
+
 
 	/**
 	 * This is the main function
@@ -62,22 +61,22 @@ class tx_watchwords_pi1 extends tslib_pibase {
 			// Get the TypoScript of the extension and initialize FlexForms
 		$this->extConf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_watchwords_pi1.'];
 		$this->pi_initPIflexForm();
-		
+
 			// Get the extension configuration
 		$this->confVars = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['watchwords']);
-		
+
 			// Get the watchwords
 		$content = $this->getWatchwordsFromBiblegateway();
 
 			// Return the content
 		return $this->pi_wrapInBaseClass($content);
 	}
-	
+
 	function getWatchwordsFromBiblegateway() {
-		
+
 			// Get the watchwords
 		$xmlString = $this->getWatchwords();
-		
+
 			// If no watchwords were fetched, return the standard output
 		if (!$xmlString) return $this->standardOutput();
 
@@ -87,22 +86,22 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		$out['license'] = $xml->channel->link;
 		$out['bibleLink'] = $xml->channel->item->guid;
 		$out['verseSource'] = $xml->channel->item->title;
-		
+
 			// Yes, this is ugly... but it works! :-)
 		$split1 = explode('&ldquo;', $xmlString);
 		$split2 = explode('&rdquo;', $split1[1]);
 		$out['verse'] = $split2[0];
-		
+
 			// Additional fields
 		$out['date'] = time();
-		
+
 			// Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
 			// and apply stdWrap to all values
-		foreach ($out as $k=>$v)		{
+		foreach ($out as $k=>$v) {
 			$v = $GLOBALS['TSFE']->csConv(trim($v), 'utf-8');
-			$out[$k] = $this->cObj->stdWrap($v, $this->extConf[$k.'.']);
+			$out[$k] = $this->cObj->stdWrap($v, $this->extConf[$k . '.']);
 		}
-	
+
 			// Use templateFile or output without templateFile, according to TypoScript settings
 		$content = '';
 		if ($this->extConf['templateFileBiblegateway']) {
@@ -125,11 +124,11 @@ class tx_watchwords_pi1 extends tslib_pibase {
             	// license url MUST always be available
 			$content.= $out['license'];
 		}
-						
+
 		return $content;
 	}
-	
-	
+
+
 	/**
 	 * Determines the language in which to fetch the watchwords in the following order:
 	 *  - Prio 1: Language from the current cObj
@@ -139,7 +138,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Language in which to get the language (2-letter ISO code)
 	*/
-	function getLanguage()		{
+	function getLanguage() {
 		$language = '';
 
 		$piLang = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_language', 'sDEF');
@@ -155,11 +154,11 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 			// Mapping TYPO3-language to ISO
 		$language = $GLOBALS['TSFE']->csConvObj->isoArray[$language] ? $GLOBALS['TSFE']->csConvObj->isoArray[$language] : $language;
-		
+
 		return $language;
 	}
-	
-	
+
+
 	/**
 	 * Determines the date for which to fetch the watchwords in the following order
 	 *  - Prio 1: Date Offset from the current cObj
@@ -168,7 +167,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	integer		Date for which to get the watchwords (UNIX-timestamp)
 	*/
-	function getFetchDate()		{
+	function getFetchDate() {
 		$fetchDate = '';
 
 		$dateOffset = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_date_offset', 'sDEF');
@@ -179,10 +178,10 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		} else {
 			$fetchDate = mktime(0, 0, 0);
 		}
-		
+
 		return $fetchDate;
 	}
-	
+
 	/**
 	 * Determines the bible version (only for biblegateway.com) for which to fetch the watchwords in the following order
 	 *  - Prio 1: Bible version from the current cObj
@@ -191,7 +190,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	integer		Bible version for which to get the watchwords
 	*/
-	function getBibleVersion()		{
+	function getBibleVersion() {
 		$bibleVersion = 31;	// New International version
 
 		$piBibleVersion = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_bible_version', 'sDEF');
@@ -203,7 +202,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 		return $bibleVersion;
 	}
-	
+
 	/**
 	 * Get the watchwords in the following order
 	 *  - Prio 1: First see if there is watchwords for this day and language cached already
@@ -212,15 +211,15 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Watchwords as an XML string
 	*/
-	function getWatchwords()		{
+	function getWatchwords() {
 		$xmlString = '';
-		
+
 		$language = $this->getLanguage();
 		$fetchDate = $this->getFetchDate();
 		$bibleVersion = $this->getBibleVersion();
 
 		$hashKey = md5('tx_watchwords_storeKey:'.serialize(array($language, $fetchDate, $bibleVersion)));
-		// see if there is a cached XML 
+		// see if there is a cached XML
 		$cachedXmlString = $GLOBALS['TSFE']->sys_page->getHash($hashKey, 0);
 		if ($cachedXmlString) {
 			return $cachedXmlString;
@@ -229,7 +228,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		if ($this->extConf['testFile']) {
 			$xmlString = t3lib_div::getURL($this->extConf['testFile']);
 		} else {
-			
+
 			$urlParams = $bibleVersion ? '?'.$bibleVersion : '';
 			$url = $this->biblegateway_com.$urlParams;
 			$xmlString = t3lib_div::getURL($url);
@@ -242,13 +241,13 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 		return $xmlString;
 	}
-	
+
 	/**
 	 * Gets the standard output as defined by TypoScript.
 	 *
 	 * @return	string		Standard output
 	*/
-	function standardOutput()		{
+	function standardOutput() {
 		$out = $this->cObj->stdWrap($this->extConf['standard'], $this->extConf['standard.']);
 		return $this->pi_wrapInBaseClass($out);
 	}

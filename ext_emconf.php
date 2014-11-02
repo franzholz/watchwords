@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'This extension adds a new content element which will get a new Christian Watchword (bible verse) every day.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '0.7.3',
+	'version' => '1.0.0',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',
@@ -27,13 +27,15 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => 'tt_content',
 	'clearcacheonload' => 0,
 	'lockType' => '',
-	'author' => 'David Bruehlmeier',
+	'author' => 'David Bruehlmeier / Franz Holzinger',
 	'author_email' => 'typo3@bruehlmeier.com',
 	'author_company' => '',
 	'CGLcompliance' => '',
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
+			'php' => '5.3.0-5.5.99',
+			'typo3' => '4.5.0-6.2.99',
 		),
 		'conflicts' => array(
 		),
