@@ -230,7 +230,6 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		if ($this->extConf['testFile']) {
 			$xmlString = t3lib_div::getURL($this->extConf['testFile']);
 		} else {
-
 			$urlParams = $bibleVersion ? '?'.$bibleVersion : '';
 			$url = $this->biblegateway_com.$urlParams;
 			$xmlString = t3lib_div::getURL($url);
