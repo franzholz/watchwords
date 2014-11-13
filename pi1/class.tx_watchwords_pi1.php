@@ -172,9 +172,9 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 		$dateOffset = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_date_offset', 'sDEF');
 		if ($dateOffset) {
-			$fetchDate = mktime(0, 0, 0)+(86400 * $dateOffset);
+			$fetchDate = mktime(0, 0, 0) + (86400 * $dateOffset);
 		} elseif ($this->extConf['dateOffset']) {
-			$fetchDate = mktime(0, 0, 0)+(86400 * $this->extConf['dateOffset']);
+			$fetchDate = mktime(0, 0, 0) + (86400 * $this->extConf['dateOffset']);
 		} else {
 			$fetchDate = mktime(0, 0, 0);
 		}

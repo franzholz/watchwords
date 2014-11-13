@@ -41,11 +41,19 @@ class tx_watchwords_pi1_wizicon {
 			'description' => $LANG->getLLL('pi1_plus_wiz_description', $LL),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=watchwords_pi1' );
 
+debug ($wizardItems, '$wizardItems');
 		return $wizardItems;
 	}
 
-	function includeLocalLang() {
-		include(t3lib_extMgm::extPath('watchwords').'locallang.php');
+	function includeLocalLang()    {
+debug ($GLOBALS['LANG']->lang, '$GLOBALS[\'LANG\']->lang');
+
+		$llFile = t3lib_extMgm::extPath('watchwords') . 'locallang.xlf';
+
+		$parser = t3lib_div::makeInstance('t3lib_l10n_parser_xliff');
+		$LOCAL_LANG = $parser->getParsedData($llFile, $GLOBALS['LANG']->lang);
+
+debug ($LOCAL_LANG, '$LOCAL_LANG');
 		return $LOCAL_LANG;
 	}
 }
