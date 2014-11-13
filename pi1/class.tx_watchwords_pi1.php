@@ -25,6 +25,8 @@
 * Plugin 'Display Watchword' for the 'watchwords' extension.
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
+*
+* $Id$
 */
 
 

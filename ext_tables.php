@@ -31,6 +31,12 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+$typoVersion = '';
+
+if (t3lib_extMgm::isLoaded('div2007')) {
+	$typoVersion = tx_div2007_core::getTypoVersion();
+}
+
 // *************************************
 // *** Add FE Plugin
 // *************************************
@@ -53,8 +59,13 @@ t3lib_extMgm::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_
 // *** Addition to tt_content
 // *************************************
 
-	// Add FlexForm field to tt_content
-t3lib_div::loadTCA('tt_content');
+if (
+	$typoVersion < '6001000'
+) {
+		// Add FlexForm field to tt_content
+	t3lib_div::loadTCA('tt_content');
+}
+
 t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:watchwords/flexform_ds_biblegateway.xml');
 
 

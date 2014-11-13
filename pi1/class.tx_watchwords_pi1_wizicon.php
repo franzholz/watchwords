@@ -25,6 +25,8 @@
 * Class that adds the wizard icon.
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
+*
+* $Id$
 */
 
 
