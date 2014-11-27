@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2005 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2014 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,41 +25,76 @@
 * Class with method called as hook in tslib_fe
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
+* $Id$
 */
 
 class tx_watchwords_tslibfe {
 
 	/**
 	 * Checks if the current page contains at least one active watchwords plugin. If so, the cached page must be from today, otherwise
-	 * old watchwords might be displayed from the cache. So if the cached page is NOT from today, the cached is forced
+	 * old watchwords might be displayed from the cache. So if the cached page is NOT from today, the cache is forced
 	 * to be reloaded.
 	 *
 	 * @param	array		$params: The current parameters, passed by reference
-	 * @param	object		$reference: The current cObj, passed by reference
+	 * @param	object		$pObj: The current cObj
 	 * @return	void		Nothing returned. $params['disableAcquireCacheData'] is directly changed, as it is passed by reference
 	 */
-	function headerNoCache(&$params, &$reference) {
-
+	public function headerNoCache(&$params, $pObj) {
 			// Check if the current page contains a watchwords plugin
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+		$rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 			'uid,pid,list_type',
 			'tt_content',
-			'pid=' . $reference->id . ' AND list_type=\'watchwords_pi1\'' . $reference->sys_page->enableFields('tt_content'),
+			'pid=' . $pObj->id . ' AND list_type=\'watchwords_pi1\'' . $pObj->sys_page->enableFields('tt_content'),
 			'',
 			'',
 			'1'
 		);
 
-		if ($res) {
-				// Get the cache of the current page
-				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('id,page_id,tstamp', 'cache_pages', 'page_id=' . $reference->id);
-				if ($res) {
-						$rec = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+		if (
+			is_array($rows) &&
+			count($rows)
+		) {
+			$typoVersion = '';
 
-						// If the cached page is not from today, force to reload the cache
-						$today = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
-						if ($rec['tstamp'] < $today) $params['disableAcquireCacheData'] = TRUE;
+			if (t3lib_extMgm::isLoaded('div2007')) {
+				$typoVersion = tx_div2007_core::getTypoVersion();
+			}
+			$row = FALSE;
+
+			if (
+				$typoVersion >= '6002000'
+			) {
+				$callingClassName = '\\TYPO3\\CMS\\Core\\Utility\\GeneralUtility';
+				$cacheManager = call_user_func($callingClassName . '::makeInstance', 'TYPO3\\CMS\\Core\\Cache\\CacheManager');
+				$pageCache = $cacheManager->getCache('cache_pages');
+				$row = $pageCache->get($pObj->getHash());
+			} else {
+				// Get the cache of the current page
+				$res =
+					$GLOBALS['TYPO3_DB']->exec_SELECTquery(
+						'id,page_id,tstamp',
+						'cache_pages',
+						'page_id=' . $pObj->id
+					);
+				if ($res) {
+					$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 				}
+			}
+
+			if (
+				is_array($row) &&
+				$row['tstamp']
+			) {
+				$today = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+				if (!empty($GLOBALS['TYPO3_CONF_VARS']['SYS']['serverTimeZone'])) {
+					$today += ($GLOBALS['TYPO3_CONF_VARS']['SYS']['serverTimeZone'] * 3600);
+				}
+
+				// If the cached page is not from today, force to reload the cache
+				if ($row['tstamp'] < $today) {
+					$params['disableAcquireCacheData'] = TRUE;
+				}
+			}
 		}
 	}
 }

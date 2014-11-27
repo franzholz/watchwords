@@ -1,3 +1,7 @@
+2014-11-27  Franz Holzinger  <franz@fholzinger.com>
+
+	* bugfix to reload the cache under TYPO3 6.2 if the cached watchword is not from today
+
 2014-10-26  Franz Holzinger  <franz@fholzinger.com>
 
 	* add Franz Holzinger as the second admin

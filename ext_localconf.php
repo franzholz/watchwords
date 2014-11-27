@@ -1,5 +1,7 @@
 <?php
-if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
+if (!defined ('TYPO3_MODE')) {
+	die ('Access denied.');
+}
 
 	// Add the extension as a (cached) plugin to the standard template content (default), UID=43
 t3lib_extMgm::addPItoST43($_EXTKEY, 'pi1/class.tx_watchwords_pi1.php', '_pi1', 'list_type', 1);
