@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2014 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2004-2005 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,30 +25,25 @@
 * Class that adds the wizard icon.
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
-*
-* $Id$
 */
 
 
 
 class tx_watchwords_pi1_wizicon {
-	function proc($wizardItems) {
-		global $LANG;
-
+	public function proc($wizardItems) {
 		$LL = $this->includeLocalLang();
 
 		$wizardItems['plugins_tx_watchwords_pi1'] = array(
-		'icon' => t3lib_extMgm::extRelPath('watchwords')."pi1/ce_wiz.gif",
-			'title' => $LANG->getLLL('pi1_title', $LL),
-			'description' => $LANG->getLLL('pi1_plus_wiz_description', $LL),
+		'icon' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('watchwords') . 'pi1/ce_wiz.gif',
+			'title' => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
+			'description' => $GLOBALS['LANG']->getLLL('pi1_plus_wiz_description', $LL),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=watchwords_pi1' );
+
 		return $wizardItems;
 	}
 
-	function includeLocalLang()    {
-		$llFile = t3lib_extMgm::extPath('watchwords') . 'locallang.xlf';
-		$parser = t3lib_div::makeInstance('t3lib_l10n_parser_xliff');
-		$LOCAL_LANG = $parser->getParsedData($llFile, $GLOBALS['LANG']->lang);
+	public function includeLocalLang () {
+		include(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('watchwords') . 'locallang.xlf');
 		return $LOCAL_LANG;
 	}
 }
@@ -58,4 +53,3 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwo
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwords/pi1/class.tx_watchwords_pi1_wizicon.php']);
 }
 
-?>

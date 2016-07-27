@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2004-2014 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2004-2009 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,8 +25,6 @@
 * Plugin 'Display Watchword' for the 'watchwords' extension.
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
-*
-* $Id$
 */
 
 
@@ -55,7 +53,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 * @param	array		$conf: TS-Configuration array
 	 * @return	string		Returns the watchword(s)
 	*/
-	function main($content, $conf) {
+	public function main ($content, $conf) {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
@@ -74,7 +72,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		return $this->pi_wrapInBaseClass($content);
 	}
 
-	function getWatchwordsFromBiblegateway() {
+	public function getWatchwordsFromBiblegateway () {
 
 			// Get the watchwords
 		$xmlString = $this->getWatchwords();
@@ -99,7 +97,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 
 			// Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
 			// and apply stdWrap to all values
-		foreach ($out as $k=>$v) {
+		foreach ($out as $k => $v) {
 			$v = $GLOBALS['TSFE']->csConv(trim($v), 'utf-8');
 			$out[$k] = $this->cObj->stdWrap($v, $this->extConf[$k . '.']);
 		}
@@ -140,7 +138,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Language in which to get the language (2-letter ISO code)
 	*/
-	function getLanguage() {
+	public function getLanguage () {
 		$language = '';
 
 		$piLang = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_language', 'sDEF');
@@ -169,7 +167,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	integer		Date for which to get the watchwords (UNIX-timestamp)
 	*/
-	function getFetchDate() {
+	public function getFetchDate () {
 		$fetchDate = '';
 
 		$dateOffset = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_date_offset', 'sDEF');
@@ -192,7 +190,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	integer		Bible version for which to get the watchwords
 	*/
-	function getBibleVersion() {
+	public function getBibleVersion () {
 		$bibleVersion = 31;	// New International version
 
 		$piBibleVersion = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_bible_version', 'sDEF');
@@ -213,14 +211,14 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Watchwords as an XML string
 	*/
-	function getWatchwords() {
+	public function getWatchwords () {
 		$xmlString = '';
 
 		$language = $this->getLanguage();
 		$fetchDate = $this->getFetchDate();
 		$bibleVersion = $this->getBibleVersion();
 
-		$hashKey = md5('tx_watchwords_storeKey:'.serialize(array($language, $fetchDate, $bibleVersion)));
+		$hashKey = md5('tx_watchwords_storeKey:' . serialize(array($language, $fetchDate, $bibleVersion)));
 		// see if there is a cached XML
 		$cachedXmlString = $GLOBALS['TSFE']->sys_page->getHash($hashKey, 0);
 		if ($cachedXmlString) {
@@ -228,11 +226,12 @@ class tx_watchwords_pi1 extends tslib_pibase {
 		}
 
 		if ($this->extConf['testFile']) {
-			$xmlString = t3lib_div::getURL($this->extConf['testFile']);
+			$xmlString = \TYPO3\CMS\Core\Utility\GeneralUtility::getURL($this->extConf['testFile']);
 		} else {
-			$urlParams = $bibleVersion ? '?'.$bibleVersion : '';
-			$url = $this->biblegateway_com.$urlParams;
-			$xmlString = t3lib_div::getURL($url);
+
+			$urlParams = $bibleVersion ? '?' . $bibleVersion : '';
+			$url = $this->biblegateway_com . $urlParams;
+			$xmlString = \TYPO3\CMS\Core\Utility\GeneralUtility::getURL($url);
 
 			// if the xml is fetched from remote, store it in the cache
 			if ($xmlString)	{
@@ -248,7 +247,7 @@ class tx_watchwords_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		Standard output
 	*/
-	function standardOutput() {
+	public function standardOutput () {
 		$out = $this->cObj->stdWrap($this->extConf['standard'], $this->extConf['standard.']);
 		return $this->pi_wrapInBaseClass($out);
 	}
@@ -259,4 +258,3 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwo
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwords/pi1/class.tx_watchwords_pi1.php']);
 }
 
-?>

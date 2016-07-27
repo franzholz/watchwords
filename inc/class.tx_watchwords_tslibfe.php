@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2014 David Bruehlmeier (typo3@bruehlmeier.com)
+*  (c) 2016 David Bruehlmeier (typo3@bruehlmeier.com)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,7 +25,6 @@
 * Class with method called as hook in tslib_fe
 *
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
-* $Id$
 */
 
 class tx_watchwords_tslibfe {
@@ -39,7 +38,7 @@ class tx_watchwords_tslibfe {
 	 * @param	object		$pObj: The current cObj
 	 * @return	void		Nothing returned. $params['disableAcquireCacheData'] is directly changed, as it is passed by reference
 	 */
-	public function headerNoCache(&$params, $pObj) {
+	public function headerNoCache (&$params, $pObj) {
 			// Check if the current page contains a watchwords plugin
 		$rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 			'uid,pid,list_type',
@@ -54,34 +53,15 @@ class tx_watchwords_tslibfe {
 			is_array($rows) &&
 			count($rows)
 		) {
-			$typoVersion = '';
+			$cacheManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+				'TYPO3\\CMS\\Core\\Cache\\CacheManager'
+			);
 
-			if (t3lib_extMgm::isLoaded('div2007')) {
-				$typoVersion = tx_div2007_core::getTypoVersion();
-			}
-			$row = FALSE;
-
-			if (
-				$typoVersion >= '6002000'
-			) {
-				$callingClassName = '\\TYPO3\\CMS\\Core\\Utility\\GeneralUtility';
-				$cacheManager = call_user_func($callingClassName . '::makeInstance', 'TYPO3\\CMS\\Core\\Cache\\CacheManager');
-				$pageCache = $cacheManager->getCache('cache_pages');
-				$row = $pageCache->get($pObj->getHash());
-			} else {
-				// Get the cache of the current page
-				$res =
-					$GLOBALS['TYPO3_DB']->exec_SELECTquery(
-						'id,page_id,tstamp',
-						'cache_pages',
-						'page_id=' . $pObj->id
-					);
-				if ($res) {
-					$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
-				}
-			}
+			$pageCache = $cacheManager->getCache('cache_pages');
+			$row = $pageCache->get($pObj->getHash());
 
 			if (
+				isset($row) &&
 				is_array($row) &&
 				$row['tstamp']
 			) {
@@ -103,4 +83,3 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwo
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/watchwords/inc/class.tx_watchwords_tslibfe.php']);
 }
 
-?>
