@@ -1,5 +1,7 @@
 # Configuring the watchword extension
 plugin.tx_watchwords_pi1 {
+  userFunc = JambageCom\Watchwords\Plugin\Watchwords->main
+
   templateFileBiblegateway = {$plugin.tx_watchwords_pi1.file.templateFileBiblegateway}
   standard = Sorry, no data could be fetched!
 }
