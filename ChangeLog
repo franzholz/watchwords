@@ -1,3 +1,16 @@
+2018-05-27  Franz Holzinger  <franz@fholzinger.com>
+
+    * support for TYPO3 8.x
+    * enhancement: Show a hint from GeneralUtility::getURL in error case.
+    * restructuring for TYPO3 8.7.13:
+        inc/class.tx_watchwords_tslibfe.php -> Classes/Hooks/PageCacheHook.php
+        pi1/class.tx_watchwords_pi1_wizicon.php -> Classes/Hooks/WizardIcon.php
+        pi1/class.tx_watchwords_pi1.php -> Classes/Plugin/Watchwords.php
+        ext_typoscript_constants.txt -> Configuration/TypoScript/PluginSetup/constants.txt
+        ext_typoscript_setup.txt -> Configuration/TypoScript/PluginSetup/setup.txt
+        pi1/template_biblegateway.inc -> Resources/Private/Templates/template_biblegateway.html
+        pi1/ce_wiz.gif -> Resources/Public/Icons/watchwords.gif
+
 2016-07-27  Franz Holzinger  <franz@fholzinger.com>
 
 	* support for TYPO3 7.6.10
@@ -9,3 +22,5 @@
 2014-10-26  Franz Holzinger  <franz@fholzinger.com>
 
 	* add Franz Holzinger as the second admin
+
+

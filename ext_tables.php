@@ -28,37 +28,28 @@
  */
 
 if (!defined ('TYPO3_MODE')) {
- die ('Access denied.');
+    die ('Access denied.');
 }
 
-// *************************************
-// *** Add FE Plugin
-// *************************************
+$emClass = '\\TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility';
 
-if (TYPO3_MODE == 'BE') {
-		// Add the frontend content-element
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_watchwords_pi1_wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'pi1/class.tx_watchwords_pi1_wizicon.php';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/PluginSetup/', 'Watchwords');
+
+
+if (
+    TYPO3_MODE == 'BE'
+) {
+     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['JambageCom\\Watchwords\\Hooks\\WizardIcon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/Hooks/WizardIcon.php';
 }
 
 
-// *************************************
-// *** Frontend-Related
-// *************************************
-
-	// Including the FE-Plugin
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(Array('LLL:EXT:watchwords/locallang.php:tt_content.list_type_pi1', $_EXTKEY . '_pi1'), 'list_type');
-
-
+ 
 // *************************************
 // *** Addition to tt_content
 // *************************************
 
-	// Add FlexForm field to tt_content
+    // Add FlexForm field to tt_content
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-	$_EXTKEY . '_pi1',  'FILE:EXT:watchwords/flexform_ds_biblegateway.xml'
+    $_EXTKEY . '_pi1',  'FILE:EXT:' . $_EXTKEY . '/flexform_ds_biblegateway.xml'
 );
-
-
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key,pages,recursive';
 

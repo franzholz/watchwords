@@ -1,0 +1,52 @@
+{
+  "name": "jambagecom/watchwords",
+  "type": "typo3-cms-extension",
+  "description": "This extension adds a new content element which will get a new Christian Watchword (bible verse) every day.",
+  "keywords": [
+    "TYPO3",
+    "extension",
+    "Christian",
+    "bible"
+  ],
+  "support": {
+    "issues": "https://github.com/franzholz/watchwords/issues"
+  },
+  "homepage": "https://jambage.com",
+  "authors": [
+    {
+      "name": "Franz Holzinger",
+      "role": "Developer",
+      "homepage": "http://ttproducts.de"
+    }
+  ],
+  "license": [
+    "GPL-2.0+"
+  ],
+  "require": {
+    "typo3/cms-core": ">=6.2.0,<8.99.99"
+  },
+  "autoload": {
+    "psr-4": {
+      "JambageCom\\Watchwords\\": "Classes"
+    }
+  },
+  "replace": {
+    "watchwords": "self.version",
+    "typo3-ter/watchwords": "self.version"
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin",
+    "preferred-install": {
+      "typo3/cms": "source",
+      "typo3/cms-core": "source",
+      "*": "dist"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
+    }
+  }
+}
