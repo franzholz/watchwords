@@ -42,14 +42,3 @@ if (
      $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['JambageCom\\Watchwords\\Hooks\\WizardIcon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/Hooks/WizardIcon.php';
 }
 
-
- 
-// *************************************
-// *** Addition to tt_content
-// *************************************
-
-    // Add FlexForm field to tt_content
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    $_EXTKEY . '_pi1',  'FILE:EXT:' . $_EXTKEY . '/flexform_ds_biblegateway.xml'
-);
-

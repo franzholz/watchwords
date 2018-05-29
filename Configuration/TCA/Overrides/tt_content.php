@@ -19,7 +19,12 @@ $table = 'tt_content';
     WATCHWORDS_EXT
 );
 
+    // Add FlexForm field to tt_content
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    WATCHWORDS_EXT . '_pi1',  'FILE:EXT:' . WATCHWORDS_EXT . '/flexform_ds_biblegateway.xml'
+);
 
 $GLOBALS['TCA'][$table]['types']['list']['subtypes_addlist'][WATCHWORDS_EXT . '_pi1'] = 'pi_flexform';
 $GLOBALS['TCA'][$table]['types']['list']['subtypes_excludelist'][WATCHWORDS_EXT . '_pi1'] = 'layout,select_key,pages,recursive';
+
 

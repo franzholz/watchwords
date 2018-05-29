@@ -1,3 +1,7 @@
+2018-05-29  Franz Holzinger  <franz@fholzinger.com>
+
+    * move ExtensionManagementUtility::addPiFlexFormValue from file ext_tables.php into Configuration/TCA/Overrides/tt_content.php
+
 2018-05-27  Franz Holzinger  <franz@fholzinger.com>
 
     * support for TYPO3 8.x
