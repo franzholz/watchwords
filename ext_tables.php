@@ -31,7 +31,6 @@ if (!defined ('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$emClass = '\\TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/PluginSetup/', 'Watchwords');
 
