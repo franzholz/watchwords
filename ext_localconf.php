@@ -13,7 +13,7 @@ define('WATCHWORDS_EXT', $_EXTKEY);
 );
 
     // Activate hook to determine if the page cache needs to be reloaded
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['headerNoCache'][] = '\\JambageCom\\Watchwords\\Hooks->headerNoCache';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['headerNoCache'][] = 'JambageCom\\Watchwords\\Hooks\\PageCacheHook->headerNoCache';
 
 
 

@@ -242,7 +242,6 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
         } else {
             $urlParams = $bibleVersion ? '?' . $bibleVersion : '';
             $url = $this->biblegateway_com . $urlParams;
-            debug ($url, '$url');
             $report = '';
             $xmlString = GeneralUtility::getURL($url, 0, null, $report);
 

@@ -1,3 +1,7 @@
+2018-06-28  Franz Holzinger  <franz@fholzinger.com>
+
+    * bugfix: set the hook headerNoCache correctly  
+
 2018-05-29  Franz Holzinger  <franz@fholzinger.com>
 
     * move ExtensionManagementUtility::addPiFlexFormValue from file ext_tables.php into Configuration/TCA/Overrides/tt_content.php

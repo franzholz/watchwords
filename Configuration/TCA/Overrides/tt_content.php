@@ -12,7 +12,8 @@ $table = 'tt_content';
 // *************************************
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
     array(
-        'LLL:EXT:' . WATCHWORDS_EXT . '/locallang.xlf:tt_content.list_type_pi1', WATCHWORDS_EXT . '_pi1',
+        'LLL:EXT:' . WATCHWORDS_EXT . '/locallang.xlf:tt_content.list_type_pi1',
+        WATCHWORDS_EXT . '_pi1',
         'LLL:EXT:' . WATCHWORDS_EXT . '/Resources/Public/Icons/watchwords.gif',
     ),
     'list_type',
