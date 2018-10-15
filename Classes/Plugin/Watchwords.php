@@ -45,9 +45,8 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
     public $prefixId = 'tx_watchwords_pi1';
     public $scriptRelPath = 'Classes/Plugin/Watchwords.php';	// Path to this script relative to the extension dir.
     public $extKey = WATCHWORDS_EXT;// The extension key.
-    public $extConf = '';			// TS-configuration
-
-    public $biblegateway_com = 'http://www.biblegateway.com/usage/votd/rss/votd.rdf';	// URL of biblegateway.com
+    public $extConf = '';       // TS-configuration
+    public $biblegatewayCom = 'http://www.biblegateway.com/usage/votd/rss/votd.rdf';	// URL of biblegateway.com
 
 
     /**
@@ -111,20 +110,29 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
         if ($this->extConf['templateFileBiblegateway']) {
             $template = $this->cObj->fileResource($this->extConf['templateFileBiblegateway']);
             $globalMarkerArray = array();
-            $globalMarkerArray['###DATE###']   			= $out['date'];
-            $globalMarkerArray['###VERSE###']    		= $out['verse'];
-            $globalMarkerArray['###BIBLE_LINK###']   	= $out['bibleLink'];
-            $globalMarkerArray['###VERSE_SOURCE###']    = $out['verseSource'];
-            $globalMarkerArray['###COPYRIGHT###'] 		= $out['copyright'];
-            $globalMarkerArray['###LICENSE###']   		= $out['license'];
-            $content = $this->cObj->substituteMarkerArray($template, $globalMarkerArray);
+            $globalMarkerArray['###DATE###'] = $out['date'];
+            $globalMarkerArray['###VERSE###'] = $out['verse'];
+            $globalMarkerArray['###BIBLE_LINK###'] = $out['bibleLink'];
+            $globalMarkerArray['###VERSE_SOURCE###'] = $out['verseSource'];
+            $globalMarkerArray['###COPYRIGHT###'] = $out['copyright'];
+            $globalMarkerArray['###LICENSE###'] = $out['license'];
+            $content =
+                $this->cObj->substituteMarkerArray(
+                    $template,
+                    $globalMarkerArray
+                );
         } else {
                 // Concatenate the strings. Cannot use foreach() here because $out is not in the proper order when using PHP4
-            if ($this->extConf['date'])			$content .= $out['date'];
-            if ($this->extConf['verse'])		$content .= $out['verse'];
-            if ($this->extConf['bibleLink'])	$content .= $out['bibleLink'];
-            if ($this->extConf['verseSource'])	$content .= $out['verseSource'];
-            if ($this->extConf['copyright'])	$content .= $out['copyright'];
+            if ($this->extConf['date'])
+                $content .= $out['date'];
+            if ($this->extConf['verse'])
+                $content .= $out['verse'];
+            if ($this->extConf['bibleLink'])
+                $content .= $out['bibleLink'];
+            if ($this->extConf['verseSource'])
+                $content .= $out['verseSource'];
+            if ($this->extConf['copyright'])
+                $content .= $out['copyright'];
                 // license url MUST always be available
             $content .= $out['license'];
         }
@@ -166,7 +174,6 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
         return $language;
     }
 
-
     /**
     * Determines the date for which to fetch the watchwords in the following order
     *  - Prio 1: Date Offset from the current cObj
@@ -179,7 +186,12 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
     {
         $fetchDate = '';
 
-        $dateOffset = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_date_offset', 'sDEF');
+        $dateOffset =
+            $this->pi_getFFvalue(
+                $this->cObj->data['pi_flexform'],
+                'tx_watchwords_date_offset',
+                'sDEF'
+            );
         if ($dateOffset) {
             $fetchDate = mktime(0, 0, 0) + (86400 * $dateOffset);
         } elseif ($this->extConf['dateOffset']) {
@@ -203,7 +215,13 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
     {
         $bibleVersion = 31;	// New International version
 
-        $piBibleVersion = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'tx_watchwords_bible_version', 'sDEF');
+        $piBibleVersion =
+            $this->pi_getFFvalue(
+                $this->cObj->data['pi_flexform'],
+                'tx_watchwords_bible_version',
+                'sDEF'
+            );
+
         if ($piBibleVersion) {
             $bibleVersion = $piBibleVersion;
         } elseif ($this->extConf['bibleVersion']) {
@@ -241,7 +259,7 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
             $xmlString = GeneralUtility::getURL($this->extConf['testFile']);
         } else {
             $urlParams = $bibleVersion ? '?' . $bibleVersion : '';
-            $url = $this->biblegateway_com . $urlParams;
+            $url = $this->biblegatewayCom . $urlParams;
             $report = '';
             $xmlString = GeneralUtility::getURL($url, 0, null, $report);
 
@@ -262,7 +280,11 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
     */
     public function standardOutput ($message)
     {
-        $out = $this->cObj->stdWrap($this->extConf['standard'] . ' ' . $message, $this->extConf['standard.']);
+        $out =
+            $this->cObj->stdWrap(
+                $this->extConf['standard'] . ' ' . $message,
+                $this->extConf['standard.']
+            );
         return $this->pi_wrapInBaseClass($out);
     }
 }

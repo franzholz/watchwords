@@ -75,7 +75,7 @@ class PageCacheHook {
 
                 // If the cached page is not from today, force to reload the cache
                 if ($row['tstamp'] < $today) {
-                    $params['disableAcquireCacheData'] = TRUE;
+                    $params['disableAcquireCacheData'] = true;
                 }
             }
         }

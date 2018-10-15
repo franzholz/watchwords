@@ -1,12 +1,15 @@
-2018-06-28  Franz Holzinger  <franz@fholzinger.com>
+2018-10-15  Franz Holzinger  <franz@ttproducts.de>
+    * modification to composer.json
+
+2018-06-28  Franz Holzinger  <franz@ttproducts.de>
 
     * bugfix: set the hook headerNoCache correctly  
 
-2018-05-29  Franz Holzinger  <franz@fholzinger.com>
+2018-05-29  Franz Holzinger  <franz@ttproducts.de>
 
     * move ExtensionManagementUtility::addPiFlexFormValue from file ext_tables.php into Configuration/TCA/Overrides/tt_content.php
 
-2018-05-27  Franz Holzinger  <franz@fholzinger.com>
+2018-05-27  Franz Holzinger  <franz@ttproducts.de>
 
     * support for TYPO3 8.x
     * enhancement: Show a hint from GeneralUtility::getURL in error case.
@@ -19,7 +22,7 @@
         pi1/template_biblegateway.inc -> Resources/Private/Templates/template_biblegateway.html
         pi1/ce_wiz.gif -> Resources/Public/Icons/watchwords.gif
 
-2016-07-27  Franz Holzinger  <franz@fholzinger.com>
+2016-07-27  Franz Holzinger  <franz@ttproducts.de>
 
 	* support for TYPO3 7.6.10
 
