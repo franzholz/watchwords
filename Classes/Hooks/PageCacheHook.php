@@ -30,8 +30,8 @@ namespace JambageCom\Watchwords\Hooks;
 * @author David Bruehlmeier <typo3@bruehlmeier.com>
 */
 
-class PageCacheHook {
-
+class PageCacheHook
+{
     /**
     * Checks if the current page contains at least one active watchwords plugin. If so, the cached page must be from today, otherwise
     * old watchwords might be displayed from the cache. So if the cached page is NOT from today, the cache is forced
@@ -41,7 +41,8 @@ class PageCacheHook {
     * @param	object		$pObj: The current cObj
     * @return	void		Nothing returned. $params['disableAcquireCacheData'] is directly changed, as it is passed by reference
     */
-    public function headerNoCache (&$params, $pObj) {
+    public function headerNoCache (&$params, $pObj)
+    {
             // Check if the current page contains a watchwords plugin
         $rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
             'uid,pid,list_type',

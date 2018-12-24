@@ -27,17 +27,13 @@
  * @author David Bruehlmeier <typo3@bruehlmeier.com>
  */
 
-if (!defined ('TYPO3_MODE')) {
-    die ('Access denied.');
-}
+defined('TYPO3_MODE') or die('Access denied.');
 
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/PluginSetup/', 'Watchwords');
-
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(WATCHWORDS_EXT, 'Configuration/TypoScript/PluginSetup/', 'Watchwords');
 
 if (
     TYPO3_MODE == 'BE'
 ) {
-     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['JambageCom\\Watchwords\\Hooks\\WizardIcon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/Hooks/WizardIcon.php';
+     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['JambageCom\\Watchwords\\Hooks\\WizardIcon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(WATCHWORDS_EXT) . 'Classes/Hooks/WizardIcon.php';
 }
 

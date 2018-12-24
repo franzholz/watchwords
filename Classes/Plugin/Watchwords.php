@@ -41,7 +41,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package TYPO3
  * @subpackage tx_watchwords
  */
-class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
+class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
+{
     public $prefixId = 'tx_watchwords_pi1';
     public $scriptRelPath = 'Classes/Plugin/Watchwords.php';	// Path to this script relative to the extension dir.
     public $extKey = WATCHWORDS_EXT;// The extension key.

@@ -1,3 +1,6 @@
+2018-12-24  Franz Holzinger  <franz@ttproducts.de>
+    * bugfix: Add the file class.tx_watchwords_pi1.php because the TYPO3 method addPItoST43 requires it.
+
 2018-10-15  Franz Holzinger  <franz@ttproducts.de>
     * modification to composer.json
 
