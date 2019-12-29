@@ -78,9 +78,14 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 
     public function getWatchwordsFromBiblegateway ()
     {
+        /** @var \TYPO3\CMS\Core\Charset\CharsetConverter $charsetConverter */
+        $charsetConverter = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Charset\CharsetConverter::class);
+
         $report = '';
             // Get the watchwords
-        $xmlString = $this->getWatchwords($report);
+        $result = $this->getWatchwords($report);
+        $xmlString = $result['xml'];
+        $charset = $result['charset'];
             // If no watchwords were fetched, return the standard output
         if (!$xmlString) return $this->standardOutput($report['message']);
 
@@ -102,14 +107,17 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             // Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
             // and apply stdWrap to all values
         foreach ($out as $k => $v) {
-            $v = $GLOBALS['TSFE']->csConv(trim($v), 'utf-8');
+            $v = $charsetConverter->conv(trim($v), $charsetConverter->parse_charset($charset), 'utf-8');
             $out[$k] = $this->cObj->stdWrap($v, $this->extConf[$k . '.']);
         }
 
             // Use templateFile or output without templateFile, according to TypoScript settings
         $content = '';
         if ($this->extConf['templateFileBiblegateway']) {
-            $template = $this->cObj->fileResource($this->extConf['templateFileBiblegateway']);
+            $templateService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\MarkerBasedTemplateService::class);
+
+            $incFile = $GLOBALS['TSFE']->tmpl->getFileName($this->extConf['templateFileBiblegateway']);
+            $template = file_get_contents($incFile);
             $globalMarkerArray = array();
             $globalMarkerArray['###DATE###'] = $out['date'];
             $globalMarkerArray['###VERSE###'] = $out['verse'];
@@ -118,7 +126,7 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             $globalMarkerArray['###COPYRIGHT###'] = $out['copyright'];
             $globalMarkerArray['###LICENSE###'] = $out['license'];
             $content =
-                $this->cObj->substituteMarkerArray(
+                $templateService->substituteMarkerArray(
                     $template,
                     $globalMarkerArray
                 );
@@ -240,7 +248,7 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     *
     * @param array $report Error code/message
     *
-    * @return	string		Watchwords as an XML string
+    * @return	array		Watchwords as array of encoding and XML string
     */
     public function getWatchwords (&$report = null)
     {
@@ -250,27 +258,61 @@ class Watchwords extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         $fetchDate = $this->getFetchDate();
         $bibleVersion = $this->getBibleVersion();
         $hashKey = md5('tx_watchwords_storeKey:' . serialize(array($language, $fetchDate, $bibleVersion)));
+        
         // see if there is a cached XML
-        $cachedXmlString = $GLOBALS['TSFE']->sys_page->getHash($hashKey, 0);
+        $cachedXmlString = null;
+        /** @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface $contentHashCache */
+        $contentHashCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('cache_hash');
+        $cacheEntry = $contentHashCache->get($hashKey);
+        if ($cacheEntry) {
+            $cachedXmlString = $cacheEntry;
+        }
+
         if ($cachedXmlString) {
-            return $cachedXmlString;
+            return ['charset' => 'utf-8', 'xml' => $cachedXmlString];
         }
 
         if ($this->extConf['testFile']) {
             $xmlString = GeneralUtility::getURL($this->extConf['testFile']);
         } else {
+            $accept = array(
+                'type' => array('application/rss+xml', 'application/xml', 'application/rdf+xml', 'text/xml'),
+                'charset' => array_diff(mb_list_encodings(), array('pass', 'auto', 'wchar', 'byte2be', 'byte2le', 'byte4be', 'byte4le', 'BASE64', 'UUENCODE', 'HTML-ENTITIES', 'Quoted-Printable', '7bit', '8bit'))
+            );
+
             $urlParams = $bibleVersion ? '?' . $bibleVersion : '';
             $url = $this->biblegatewayCom . $urlParams;
-            $report = '';
-            $xmlString = GeneralUtility::getURL($url, 0, null, $report);
+            $report = [];
+            $xmlString = GeneralUtility::getURL($url, 1, null, $report);
+            $offset = strpos($xmlString, "\r\n\r\n");
+            $header = substr($xmlString, 0, $offset);
+            $match = null;
+
+            if (!$header || !preg_match('/^Content-Type:\s+([^;]+)(?:;\s*charset=(.*))?/im', $header, $match)) {
+                // error parsing the response
+            } else {
+                if (!in_array(strtolower($match[1]), array_map('strtolower', $accept['type']))) {
+                    // type not accepted
+                }
+                $encoding = trim($match[2], '"\'');
+            }
+
+            $xmlString = substr($xmlString, $offset + 4);
+
+            if (!$encoding) {
+                if (preg_match('/^<\?xml\s+version=(?:"[^"]*"|\'[^\']*\')\s+encoding=("[^"]*"|\'[^\']*\')/s', $xmlString, $match)) {
+                    $encoding = trim($match[1], '"\'');
+                }
+            }
 
             // if the xml is fetched from remote, store it in the cache
-            if ($xmlString)	{
-                $GLOBALS['TSFE']->sys_page->storeHash($hashKey, $xmlString, 'tx_watchwords');
+            if ($xmlString != '') {
+                $ident = 'tx_watchwords';
+                $contentHashCache->set($hashKey, $xmlString, ['ident_' . $ident], (int) 0);
             }
         }
 
-        return $xmlString;
+        return ['charset' => $encoding, 'xml' => $xmlString];
     }
 
     /**

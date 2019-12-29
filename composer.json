@@ -20,18 +20,22 @@
     }
   ],
   "license": [
-    "GPL-2.0+"
+    "GPL-2.0-or-later"
   ],
   "require": {
-    "typo3/cms-core": ">=6.2.0,<8.99.99"
+    "typo3/cms-core": ">=8.7.0,<=9.5.99"
   },
   "autoload": {
     "psr-4": {
       "JambageCom\\Watchwords\\": "Classes"
-    }
+    },
+    "classmap": [
+      "Classes",
+      "pi1"
+    ]
   },
   "replace": {
-    "watchwords": "self.version",
+    "jambagecom/watchwords": "self.version",
     "typo3-ter/watchwords": "self.version"
   },
   "extra": {

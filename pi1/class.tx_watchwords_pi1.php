@@ -18,8 +18,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class tx_watchwords_pi1 {
     public $cObj;
 
-    public function main($content, $conf) {
-        $pibaseObj = GeneralUtility::makeInstance(JambageCom\Watchwords\Plugin\Watchwords::class);
+    public function main ($content, $conf) {
+        $pibaseObj = GeneralUtility::makeInstance(\JambageCom\Watchwords\Plugin\Watchwords::class);
         $pibaseObj->cObj = $this->cObj;
         $content = $pibaseObj->main($content, $conf);
         return $content;

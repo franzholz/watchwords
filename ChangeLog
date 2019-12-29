@@ -1,3 +1,12 @@
+
+2019-12-29  Franz Holzinger  <franz@ttproducts.de>
+    * support for TYPO3 9.x
+    * Deprecation 80524: use the \TYPO3\CMS\Core\Cache\CacheManager directly instead of $GLOBALS["TSFE"]->sys_page->getHash($hashKey, 0);
+      replace $GLOBALS["TSFE"]->sys_page->storeHash($hashKey, $xmlString, "tx_watchwords") by GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache("cache_hash")->set($hashKey, $xmlString, ["ident_" . $ident], (int) 0)
+    * Deprecation 75327: replace $TSFE->csConv() by $charsetConverter->conv
+    * move class.tx_watchwords_pi1.php -> pi1/class.tx_watchwords_pi1.php
+    * use a charset detection method
+
 2018-12-24  Franz Holzinger  <franz@ttproducts.de>
     * bugfix: Add the file class.tx_watchwords_pi1.php because the TYPO3 method addPItoST43 requires it.
 

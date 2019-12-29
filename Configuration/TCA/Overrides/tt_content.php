@@ -1,5 +1,9 @@
 <?php
-defined('TYPO3_MODE') or die('Access denied.');
+defined('TYPO3_MODE') || die('Access denied.');
+
+if (!defined('WATCHWORDS_EXT')) {
+    define('WATCHWORDS_EXT', 'watchwords');
+}
 
 $table = 'tt_content';
 $listType = WATCHWORDS_EXT . '_pi1';
@@ -11,7 +15,7 @@ $listType = WATCHWORDS_EXT . '_pi1';
     array(
         'LLL:EXT:' . WATCHWORDS_EXT . '/locallang.xlf:tt_content.list_type_pi1',
         $listType,
-        'LLL:EXT:' . WATCHWORDS_EXT . '/Resources/Public/Icons/watchwords.gif',
+        'EXT:' . WATCHWORDS_EXT . '/Resources/Public/Icons/watchwords.gif',
     ),
     'list_type',
     WATCHWORDS_EXT
@@ -24,5 +28,4 @@ $listType = WATCHWORDS_EXT . '_pi1';
 
 $GLOBALS['TCA'][$table]['types']['list']['subtypes_addlist'][$listType] = 'pi_flexform';
 $GLOBALS['TCA'][$table]['types']['list']['subtypes_excludelist'][$listType] = 'layout,select_key,pages,recursive';
-
 

@@ -33,9 +33,9 @@ namespace JambageCom\Watchwords\Hooks;
 class PageCacheHook
 {
     /**
-    * Checks if the current page contains at least one active watchwords plugin. If so, the cached page must be from today, otherwise
-    * old watchwords might be displayed from the cache. So if the cached page is NOT from today, the cache is forced
-    * to be reloaded.
+    * Checks if the current page contains at least one active watchwords plugin. If so, the cached 
+    * page must be from today, otherwise old watchwords might be displayed from the cache. So if 
+    * the cached page is NOT from today, the cache is forced to be reloaded.
     *
     * @param	array		$params: The current parameters, passed by reference
     * @param	object		$pObj: The current cObj
@@ -45,7 +45,7 @@ class PageCacheHook
     {
             // Check if the current page contains a watchwords plugin
         $rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
-            'uid,pid,list_type',
+            'uid,pid,list_type,deleted,hidden,starttime,endtime,fe_group',
             'tt_content',
             'pid=' . $pObj->id . ' AND list_type=\'watchwords_pi1\'' . $pObj->sys_page->enableFields('tt_content'),
             '',
@@ -57,12 +57,8 @@ class PageCacheHook
             is_array($rows) &&
             count($rows)
         ) {
-            $cacheManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-                'TYPO3\\CMS\\Core\\Cache\\CacheManager'
-            );
-
-            $pageCache = $cacheManager->getCache('cache_pages');
-            $row = $pageCache->get($pObj->getHash());
+            $pObj->generatePage_preProcessing();
+            $row = $pObj->getFromCache_queryRow();
 
             if (
                 isset($row) &&
