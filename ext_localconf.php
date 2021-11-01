@@ -1,19 +1,45 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-call_user_func(function () {
-    define('WATCHWORDS_EXT', 'watchwords');
+call_user_func(
+    function()
+    {
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'JambageCom.Watchwords',
+            'Watch',
+            [
+                'Watchwords' => 'index'
+            ],
+            // non-cacheable actions
+            [
+                'Watchwords' => ''
+            ]
+        );
 
-        // Add the extension as a (cached) plugin to the standard template content (default), UID=43
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43(
-        WATCHWORDS_EXT,
-        'class.tx_watchwords_pi1.php',
-        '_pi1',
-        'list_type',
-        true
-    );
-
-        // Activate hook to determine if the page cache needs to be reloaded
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['headerNoCache'][] = 'JambageCom\\Watchwords\\Hooks\\PageCacheHook->headerNoCache';
-});
-
+        // wizards
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+            'mod {
+                wizards.newContentElement.wizardItems.plugins {
+                    elements {
+                        watch {
+                            iconIdentifier = watchwords-plugin-watch
+                            title = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords_watch.name
+                            description = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords_watch.description
+                            tt_content_defValues {
+                                CType = list
+                                list_type = watchwords_watch
+                            }
+                        }
+                    }
+                    show = *
+                }
+           }'
+        );
+		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+        $iconRegistry->registerIcon(
+            'watchwords-plugin-watch',
+            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            ['source' => 'EXT:watchwords/Resources/Public/Icons/user_plugin_watch.svg']
+        );
+    }
+);

@@ -1,31 +1,21 @@
 <?php
-defined('TYPO3_MODE') || die('Access denied.');
 
-if (!defined('WATCHWORDS_EXT')) {
-    define('WATCHWORDS_EXT', 'watchwords');
-}
+call_user_func(
+    function ()
+    {
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+        'JambageCom.Watchwords',
+        'Watch',
+        'The Watchword List',
+        'EXT:watchwords/Resources/Public/Icons/Extension.svg'
+    );
 
-$table = 'tt_content';
-$listType = WATCHWORDS_EXT . '_pi1';
-
-// *************************************
-// *** Add FE Plugin
-// *************************************
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
-    array(
-        'LLL:EXT:' . WATCHWORDS_EXT . '/locallang.xlf:tt_content.list_type_pi1',
-        $listType,
-        'EXT:' . WATCHWORDS_EXT . '/Resources/Public/Icons/watchwords.gif',
-    ),
-    'list_type',
-    WATCHWORDS_EXT
+    $listType = 'watchwords_watch';
+    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$listType] = 'pi_flexform';
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+            $listType,
+            'FILE:EXT:watchwords/Configuration/FlexForms/Watch.xml'
+        );
+    }
 );
-
-    // Add FlexForm field to tt_content
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    $listType,  'FILE:EXT:' . WATCHWORDS_EXT . '/flexform_ds_biblegateway.xml'
-);
-
-$GLOBALS['TCA'][$table]['types']['list']['subtypes_addlist'][$listType] = 'pi_flexform';
-$GLOBALS['TCA'][$table]['types']['list']['subtypes_excludelist'][$listType] = 'layout,select_key,pages,recursive';
 

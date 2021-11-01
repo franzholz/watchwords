@@ -69,9 +69,6 @@
 			<trans-unit id="pi1_flexform.tx_watchwords_language.I.ZH-ZW" xml:space="preserve">
 				<source>Chinese (Big5)</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_date_offset" xml:space="preserve">
-				<source>Date Offset</source>
-			</trans-unit>
 			<trans-unit id="pi1_flexform.tx_watchwords_bible_version" xml:space="preserve">
 				<source>Bible Version</source>
 			</trans-unit>
