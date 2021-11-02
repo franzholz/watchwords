@@ -31,13 +31,6 @@ class WatchwordsController extends ActionController
      */
     public function indexAction()
     {
-        $debugVariant = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            \JambageCom\FhDebug\Configuration\Variant::class,
-            [
-                'param1' => '1',
-                'param2' => 2
-            ]
-        );
         $api = $this->objectManager->get(BibleWebApi::class);
         $watchword = [];
         $api->getWatchwordsFromBiblegateway($watchword, $this->settings);
