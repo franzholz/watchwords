@@ -43,6 +43,5 @@ abstract class BibleApi
     public function getCObj () {
         return $this->cObj;
     }
-
 }
 
