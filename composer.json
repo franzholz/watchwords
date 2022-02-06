@@ -13,6 +13,6 @@
         }
     },
     "replace": {
-        "jambagecom/watchwords": "self.version"
+        "typo3-ter/watchwords": "self.version"
     }
 }
