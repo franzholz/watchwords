@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Bible Gateway's Verse of the Day</title>
+ <subtitle>A daily word of exultation.</subtitle>
+ <link href="https://www.biblegateway.com/votd/get/?format=atom" rel="self"/>
+ <link href="https://www.biblegateway.com"/>
+ <updated>2022-02-06T00:00:00Z</updated>
+ <author>
+   <name>Bible Gateway</name>
+ </author>
+ <id>tag:biblegateway.com,2022-02-06:NIV</id>
+
+ <entry>
+   <title>Proverbs 21:21</title>
+   <rights type="html"><![CDATA[ ]]></rights>
+   <link href="https://www.biblegateway.com/passage/?search=Proverbs%2021:21&amp;version=NIV"/>
+   <link rel="related" title="Full Copyright" href="https://www.biblegateway.com/versions/index.php?action=getVersionInfo&amp;vid=31&amp;lang=2" />
+   <link rel="related" title="Audio" href="https://www.biblegateway.com/audio/mclean/niv/Prov.21.21" />
+   <id>tag:biblegateway.com,2022-02-06:NIV</id>
+   <updated>2022-02-06T00:00:00Z</updated>
+   <content type="html"><![CDATA[&ldquo;Whoever pursues righteousness and love finds life, prosperity and honor.&rdquo;]]></content>
+ </entry>
+
+</feed>

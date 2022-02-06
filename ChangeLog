@@ -1,3 +1,12 @@
+TODO:
+
+siehe 
+https://docs.typo3.org/m/typo3/reference-tca/11.5/en-us/ColumnsConfig/Type/Select/Single/Index.html#columns-select-rendertype-selectsingle
+Eine Datei einbinden.
+
+2022-02-06  Franz Holzinger  <franz@ttproducts.de>
+    * support for TYPO3 11.x
+
 2021-11-01  Franz Holzinger  <franz@ttproducts.de>
     * support for TYPO3 10.x
     * rewrite with Extbase/Fluid

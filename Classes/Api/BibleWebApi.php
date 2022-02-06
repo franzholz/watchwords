@@ -27,12 +27,16 @@ class BibleWebApi extends BibleApi
         /** @var \TYPO3\CMS\Core\Charset\CharsetConverter $charsetConverter */
         $charsetConverter = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Charset\CharsetConverter::class);
         $report = '';
+            debug ('B');
+                debug($extConf, '$extConf');
+            debug ('E');
+
             // Get the watchwords
         $result =
             $this->getWatchwords(
                 $report,
                 $extConf['bible_version'],
-                $extConf['dateOffset'],
+                $extConf['timeOffset'],
                 $extConf['testFile']
             );
 
@@ -67,19 +71,19 @@ class BibleWebApi extends BibleApi
     }
 
     /**
-    * Determines the date for which to fetch the watchwords in the following order
-    *  - Prio 1: Date Offset from the current cObj
-    *  - Prio 2: Date Offset from the TypoScript of the extension
-    *  - Prio 3: No Date Offset found, take current date
+    * Determines the time for which to fetch the watchwords in the following order
+    *  - Prio 1: Time Offset from the current cObj
+    *  - Prio 2: Time Offset from the TypoScript of the extension
+    *  - Prio 3: No Time Offset found, take current time
     *
     * @return	integer		Date for which to get the watchwords (UNIX-timestamp)
     */
-    public function getFetchDate ($paramDateOffset)
+    public function getFetchDate ($paramTimeOffset)
     {
         $fetchDate = '';
 
-        if ($paramDateOffset) {
-            $fetchDate = mktime(0, 0, 0) + (86400 * $paramDateOffset);
+        if ($paramTimeOffset) {
+            $fetchDate = mktime(0, 0, 0) + (3600 * $paramTimeOffset);
         } else {
             $fetchDate = mktime(0, 0, 0);
         }
@@ -90,21 +94,21 @@ class BibleWebApi extends BibleApi
 
     /**
     * Get the watchwords in the following order
-    *  - Prio 1: First see if there is watchwords for this day and language cached already
+    *  - Prio 1: First see if there is a watchword for this day and language cached already
     *  - Prio 2: Use the testFile
     *  - Prio 3: Get the XML-File through HTTP
     *
     * @param array output $report Error code/message
-    * @param int $paramDateOffset offset for the datetime
+    * @param int $paramTimeOffset offset for the datetime
     * @param string $paramTestFile test file
     *
     * @return	array		Watchwords as array of encoding and XML string
     */
-    public function getWatchwords (&$report = null, $bibleVersion, $paramDateOffset = null, $paramTestFile = null)
+    public function getWatchwords (&$report = null, $bibleVersion, $paramTimeOffset = null, $paramTestFile = null)
     {
         $xmlString = '';
 
-        $fetchDate = $this->getFetchDate($paramDateOffset);
+        $fetchDate = $this->getFetchDate($paramTimeOffset);
         $hashKey = md5('tx_watchwords_storeKey:' . serialize([$fetchDate, $bibleVersion]));
 
         // see if there is a cached XML

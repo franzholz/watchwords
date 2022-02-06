@@ -3,179 +3,185 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2014-11-13T08:56:24Z" product-name="watchwords">
 		<header/>
 		<body>
-			<trans-unit id="pi1_title" xml:space="preserve">
-				<source>Display Watchword</source>
-			</trans-unit>
-			<trans-unit id="pi1_plus_wiz_description" xml:space="preserve">
-				<source>Adds a daily changing Christian Watchword.</source>
-			</trans-unit>
 			<trans-unit id="pi1_flexform.general" xml:space="preserve">
 				<source>General Settings</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language" xml:space="preserve">
 				<source>Watchword-Language</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.default" xml:space="preserve">
+			<trans-unit id="pi1_flexform.timeOffset">
+				<source>Time offset in hours</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.testFile">
+				<source>Test File </source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.testFile.description">
+				<source>Choose a XML News Feed file as you can download it from https://www.biblegateway.com/votd/get/?format=atom . See https://www.biblegateway.com/usage/ .</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.language.I.default" xml:space="preserve">
 				<source>(Default)</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.AF" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.AF" xml:space="preserve">
 				<source>Afrikaans</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.AR" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.AR" xml:space="preserve">
 				<source>Arabic</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.CS" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.CS" xml:space="preserve">
 				<source>Czech</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.DE" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.DE" xml:space="preserve">
 				<source>German</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.EN" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.EN" xml:space="preserve">
 				<source>English</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.ES" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.ES" xml:space="preserve">
 				<source>Spanish</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.FR" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.FR" xml:space="preserve">
 				<source>French</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.IT" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.IT" xml:space="preserve">
 				<source>Italian</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.NL" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.NL" xml:space="preserve">
 				<source>Dutch</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.NO" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.NO" xml:space="preserve">
 				<source>Norwegian</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.PT" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.PT" xml:space="preserve">
 				<source>Portugese</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.RO" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.RO" xml:space="preserve">
 				<source>Romanian</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.RU" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.RU" xml:space="preserve">
 				<source>Russian</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.TR" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.TR" xml:space="preserve">
 				<source>Turkish</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.VI" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.VI" xml:space="preserve">
 				<source>Vietnamese</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.ZH-CN" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.ZH-CN" xml:space="preserve">
 				<source>Chinese (GB2312)</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_language.I.ZH-ZW" xml:space="preserve">
+			<trans-unit id="pi1_flexform.language.I.ZH-ZW" xml:space="preserve">
 				<source>Chinese (Big5)</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version" xml:space="preserve">
 				<source>Bible Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.1" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.1" xml:space="preserve">
 				<source>Albanian: Albanian Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.21" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.21" xml:space="preserve">
 				<source>Bulgarian: Bulgarian Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.80" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.80" xml:space="preserve">
 				<source>Chinese (Simplified): Chinese Union Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.22" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.22" xml:space="preserve">
 				<source>Chinese (Traditional): Chinese Union Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.11" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.11" xml:space="preserve">
 				<source>Danish: Dette er Biblen på dansk</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.8" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.8" xml:space="preserve">
 				<source>English: American Standard Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.16" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.16" xml:space="preserve">
 				<source>English: Darby Translation</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.47" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.47" xml:space="preserve">
 				<source>English: English Standard Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.9" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.9" xml:space="preserve">
 				<source>English: King James Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.31" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.31" xml:space="preserve">
 				<source>English: New International Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.15" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.15" xml:space="preserve">
 				<source>English: Young's Literal Translation</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.2" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.2" xml:space="preserve">
 				<source>French: Louis Segond</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.10" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.10" xml:space="preserve">
 				<source>German: Luther Bibel 1545</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.69" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.69" xml:space="preserve">
 				<source>Greek: 1550 Stephanus New Testament</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.68" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.68" xml:space="preserve">
 				<source>Greek: 1881 Westcott-Hort New Testament</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.70" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.70" xml:space="preserve">
 				<source>Greek: 1894 Scrivener New Testament</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.23" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.23" xml:space="preserve">
 				<source>Haïtian Creole: Haïtian Creole Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.81" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.81" xml:space="preserve">
 				<source>Hebrew: The Westminster Leningrad Codex</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.17" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.17" xml:space="preserve">
 				<source>Hungarian: Hungarian Kairoli</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.18" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.18" xml:space="preserve">
 				<source>Icelandic: Icelandic Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.3" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.3" xml:space="preserve">
 				<source>Italian: Conferenza Episcopale Italiana</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.20" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.20" xml:space="preserve">
 				<source>Korean: Korean Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.4" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.4" xml:space="preserve">
 				<source>Latin: Biblia Sacra Vulgata</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.24" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.24" xml:space="preserve">
 				<source>Maori: Maori Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.5" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.5" xml:space="preserve">
 				<source>Norwegian: Det Norsk Bibelselskap 1930</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.12" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.12" xml:space="preserve">
 				<source>Polish: Biblia Tysiaclecia</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.25" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.25" xml:space="preserve">
 				<source>Portugese: João Ferreira de Almeida Atualizada</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.14" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.14" xml:space="preserve">
 				<source>Romanian: Romanian</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.13" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.13" xml:space="preserve">
 				<source>Russian: Russian Synodal Version</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.42" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.42" xml:space="preserve">
 				<source>Spanish: Nueva Versión Internacional</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.6" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.6" xml:space="preserve">
 				<source>Spanish: Reina-Valera Antigua</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.7" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.7" xml:space="preserve">
 				<source>Swedish: Svenska 1917</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.27" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.27" xml:space="preserve">
 				<source>Ukrainian: Ukrainian Bible</source>
 			</trans-unit>
-			<trans-unit id="pi1_flexform.tx_watchwords_bible_version.I.19" xml:space="preserve">
+			<trans-unit id="pi1_flexform.bible_version.I.19" xml:space="preserve">
 				<source>Vietnamese: 1934 Vietnamese Bible</source>
 			</trans-unit>
 			<trans-unit id="tt_content.list_type_pi1" xml:space="preserve">
 				<source>Display Watchword</source>
+			</trans-unit>
+			<trans-unit id="tt_content.wizard_description" xml:space="preserve">
+				<source>Adds a daily changing Christian Watchword.</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -43,12 +43,13 @@ class WizardIcon
         /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
         $iconRegistry = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
         $iconPath = 'Resources/Public/Icons/';
+        $languagePath = '/Resources/Private/Language/';
 
         $type = 'watchwords_pi1';
         $params = '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $type;
         $wizardItem = array(
-            'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . '/locallang.xlf:pi1_title'),
-            'description' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . '/locallang.xlf:pi1_plus_wiz_description'),
+            'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . $languagePath . 'locallang.xlf:tt_content.list_type_pi1'),
+            'description' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . $languagePath . 'locallang.xlf:tt_content.wizard_description'),
             'params' => $params
         );
 

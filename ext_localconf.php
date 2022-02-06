@@ -8,11 +8,11 @@ call_user_func(
             'JambageCom.Watchwords',
             'Watch',
             [
-                'Watchwords' => 'index'
+                \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
             ],
             // non-cacheable actions
             [
-                'Watchwords' => ''
+                \JambageCom\Watchwords\Controller\WatchwordsController::class => ''
             ]
         );
 
@@ -23,8 +23,8 @@ call_user_func(
                     elements {
                         watch {
                             iconIdentifier = watchwords-plugin-watch
-                            title = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords_watch.name
-                            description = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords_watch.description
+                            title = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:watchwords_watch.name
+                            description = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:watchwords_watch.description
                             tt_content_defValues {
                                 CType = list
                                 list_type = watchwords_watch
