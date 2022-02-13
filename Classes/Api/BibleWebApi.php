@@ -26,7 +26,6 @@ class BibleWebApi extends BibleApi
     {
         /** @var \TYPO3\CMS\Core\Charset\CharsetConverter $charsetConverter */
         $charsetConverter = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Charset\CharsetConverter::class);
-        $report = '';
             debug ('B');
                 debug($extConf, '$extConf');
             debug ('E');
@@ -34,7 +33,6 @@ class BibleWebApi extends BibleApi
             // Get the watchwords
         $result =
             $this->getWatchwords(
-                $report,
                 $extConf['bible_version'],
                 $extConf['timeOffset'],
                 $extConf['testFile']
@@ -44,7 +42,7 @@ class BibleWebApi extends BibleApi
         $charset = $result['charset'];
             // If no watchwords were fetched, return the standard output
         if (!$xmlString) {
-            return $this->standardOutput($report['message']);
+            return $this->standardOutput('READ ERROR');
         }
 
             // Parse the XML
@@ -98,15 +96,15 @@ class BibleWebApi extends BibleApi
     *  - Prio 2: Use the testFile
     *  - Prio 3: Get the XML-File through HTTP
     *
-    * @param array output $report Error code/message
     * @param int $paramTimeOffset offset for the datetime
     * @param string $paramTestFile test file
     *
     * @return	array		Watchwords as array of encoding and XML string
     */
-    public function getWatchwords (&$report = null, $bibleVersion, $paramTimeOffset = null, $paramTestFile = null)
+    public function getWatchwords ($bibleVersion, $paramTimeOffset = null, $paramTestFile = null)
     {
         $xmlString = '';
+        $encoding = '';
 
         $fetchDate = $this->getFetchDate($paramTimeOffset);
         $hashKey = md5('tx_watchwords_storeKey:' . serialize([$fetchDate, $bibleVersion]));
@@ -134,8 +132,11 @@ class BibleWebApi extends BibleApi
 
             $urlParams = $bibleVersion ? '?' . $bibleVersion : '';
             $url = $this->biblegatewayCom . $urlParams;
-            $report = [];
-            $xmlString = GeneralUtility::getURL($url, 1, null, $report);
+            $xmlString = GeneralUtility::getURL($url);
+            if ($xmlString === false) {
+                trigger_error('Cannot read file "' . $url . '"', E_USER_ERROR);
+                return false;
+            }
             $offset = strpos($xmlString, "\r\n\r\n");
             $header = substr($xmlString, 0, $offset);
             $match = null;

@@ -184,25 +184,18 @@
                             <label>LLL:EXT:watchwords/Resources/Private/Language/locallang.xlf:pi1_flexform.testFile</label>
                             <description>LLL:EXT:watchwords/Resources/Private/Language/locallang.xlf:pi1_flexform.testFile.description</description>
                             <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <allowed>sys_file_reference</allowed>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1">0</numIndex>
-                                    </numIndex>
-                                </items>
-                                <fileFolderConfig>
-                                    <folder></folder>
-                                    <allowedExtensions>xml</allowedExtensions>
-                                    <depth>4</depth>
-                                </fileFolderConfig>
-                                <fieldWizard>
-                                    <selectIcons>
-                                        <disabled>false</disabled>
-                                    </selectIcons>
-                                </fieldWizard>
+                                <type>input</type>
+                                <renderType>inputLink</renderType>
+                                <size>50</size>
+                                <max>1024</max>
+                                <eval>trim</eval>
+                                <fieldControl>
+                                    <linkPopup>
+                                        <options>
+                                            <title>LLL:EXT:watchwords/Resources/Private/Language/locallang.xlf:pi1_flexform.testFile.formlabel</title>
+                                        </options>                                            
+                                    </linkPopup>
+                                </fieldControl>
                             </config>
 						</TCEforms>
                     </settings.testFile>
