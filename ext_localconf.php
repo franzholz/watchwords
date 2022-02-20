@@ -5,7 +5,7 @@ call_user_func(
     function()
     {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-            'JambageCom.Watchwords',
+            'Watchwords',
             'Watch',
             [
                 \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
@@ -23,11 +23,11 @@ call_user_func(
                     elements {
                         watch {
                             iconIdentifier = watchwords-plugin-watch
-                            title = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:watchwords_watch.name
-                            description = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:watchwords_watch.description
+                            title = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords.name
+                            description = LLL:EXT:watchwords/Resources/Private/Language/locallang_db.xlf:tx_watchwords.description
                             tt_content_defValues {
                                 CType = list
-                                list_type = watchwords_watch
+                                list_type = tx_watchwords
                             }
                         }
                     }

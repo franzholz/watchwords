@@ -1,19 +1,23 @@
 
-plugin.watchwords_watch {
+plugin.tx_watchwords {
     settings {
+        standard = TEXT
+        standard.value = Sorry, no data could be fetched!
+    }
+    instructions {
         standard = TEXT
         standard.value = Sorry, no data could be fetched!
     }
     view {
         templateRootPaths.0 = EXT:watchwords/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.watchwords_watch.view.templateRootPath}
+        templateRootPaths.1 = {$plugin.tx_watchwords.view.templateRootPath}
         partialRootPaths.0 = EXT:watchwords/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.watchwords_watch.view.partialRootPath}
+        partialRootPaths.1 = {$plugin.tx_watchwords.view.partialRootPath}
         layoutRootPaths.0 = EXT:watchwords/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.watchwords_watch.view.layoutRootPath}
+        layoutRootPaths.1 = {$plugin.tx_watchwords.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.watchwords_watch.persistence.storagePid}
+        storagePid = {$plugin.tx_watchwords.persistence.storagePid}
         #recursive = 1
     }
     features {

@@ -4,7 +4,7 @@ call_user_func(
     function ()
     {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-            'JambageCom.Watchwords',
+            'Watchwords',
             'Watch',
             'The Watchword List',
             'EXT:watchwords/Resources/Public/Icons/Extension.svg'

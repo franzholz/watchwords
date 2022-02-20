@@ -1,8 +1,7 @@
-TODO:
-
-siehe 
-https://docs.typo3.org/m/typo3/reference-tca/11.5/en-us/ColumnsConfig/Type/Select/Single/Index.html#columns-select-rendertype-selectsingle
-Eine Datei einbinden.
+2022-02-20  Franz Holzinger  <franz@ttproducts.de>
+    * changes: read the XML string from the WEB API
+    * changes: Setup and language codes
+    * TODO: read the XML string from a configurable test file
 
 2022-02-06  Franz Holzinger  <franz@ttproducts.de>
     * support for TYPO3 11.x

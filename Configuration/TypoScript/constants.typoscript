@@ -1,17 +1,17 @@
 
-plugin.watchwords_watch {
+plugin.tx_watchwords {
     settings {
     }
     view {
-        # cat=plugin.watchwords_watch/file; type=string; label=Path to template root (FE)
+        # cat=plugin.tx_watchwords/file; type=string; label=Path to template root (FE)
         templateRootPath = EXT:watchwords/Resources/Private/Templates/
-        # cat=plugin.watchwords_watch/file; type=string; label=Path to template partials (FE)
+        # cat=plugin.tx_watchwords/file; type=string; label=Path to template partials (FE)
         partialRootPath = EXT:watchwords/Resources/Private/Partials/
-        # cat=plugin.watchwords_watch/file; type=string; label=Path to template layouts (FE)
+        # cat=plugin.tx_watchwords/file; type=string; label=Path to template layouts (FE)
         layoutRootPath = EXT:watchwords/Resources/Private/Layouts/
     }
     persistence {
-        # cat=plugin.watchwords_watch//a; type=string; label=Default storage PID
+        # cat=plugin.tx_watchwords/a; type=string; label=Default storage PID
         storagePid =
     }
 }

@@ -15,7 +15,11 @@
 
 namespace JambageCom\Watchwords\Api;
 
+
+use TYPO3\CMS\Core\LinkHandling\FileLinkHandler;
+use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 
 class BibleWebApi extends BibleApi
@@ -24,16 +28,15 @@ class BibleWebApi extends BibleApi
 
     public function getWatchwordsFromBiblegateway (&$out, array $extConf)
     {
+        $cObj = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class);
+
         /** @var \TYPO3\CMS\Core\Charset\CharsetConverter $charsetConverter */
         $charsetConverter = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Charset\CharsetConverter::class);
-            debug ('B');
-                debug($extConf, '$extConf');
-            debug ('E');
 
             // Get the watchwords
         $result =
             $this->getWatchwords(
-                $extConf['bible_version'],
+                $extConf['bibleVersion'],
                 $extConf['timeOffset'],
                 $extConf['testFile']
             );
@@ -42,11 +45,13 @@ class BibleWebApi extends BibleApi
         $charset = $result['charset'];
             // If no watchwords were fetched, return the standard output
         if (!$xmlString) {
-            return $this->standardOutput('READ ERROR');
+            $out['error'] = htmlspecialchars($this->standardOutput('READ ERROR', $extConf));
+            return false;
         }
 
             // Parse the XML
         $xml = simplexml_load_string($xmlString);
+
         $out['copyright'] = $xml->channel->title;
         $out['license'] = $xml->channel->link;
         $out['bibleLink'] = $xml->channel->item->guid;
@@ -55,6 +60,7 @@ class BibleWebApi extends BibleApi
             // Yes, this is ugly... but it works! :-)
         $split1 = explode('&ldquo;', $xmlString);
         $split2 = explode('&rdquo;', $split1[1]);
+        
         $out['verse'] = $split2[0];
 
             // Additional fields
@@ -63,8 +69,14 @@ class BibleWebApi extends BibleApi
             // Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
             // and apply stdWrap to all values
         foreach ($out as $k => $v) {
-            $v = $charsetConverter->conv(trim($v), $charsetConverter->parse_charset($charset), 'utf-8');
-            $out[$k] = $this->getCObj()->stdWrap($v, $extConf[$k . '.']);
+            $value = trim($v);
+            if (!empty($charset) && mb_check_encoding($value, $charset)) {
+                $value = $charsetConverter->conv(trim($value), $charset,  'utf-8');
+            }
+            if (isset($extConf[$k . '.'])) {
+                $value = $cObj->stdWrap($value, $extConf[$k . '.']);
+            }
+            $out[$k] = htmlspecialchars($value);
         }
     }
 
@@ -123,6 +135,10 @@ class BibleWebApi extends BibleApi
         }
 
         if ($paramTestFile) {
+            $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
+            $defaultStorage = $storageRepository->getDefaultStorage();
+            
+            $fileInfo = $defaultStorage->getFileByIdentifier($paramTestFile);
             $xmlString = GeneralUtility::getURL($paramTestFile);
         } else {
             $accept = [
@@ -132,25 +148,12 @@ class BibleWebApi extends BibleApi
 
             $urlParams = $bibleVersion ? '?' . $bibleVersion : '';
             $url = $this->biblegatewayCom . $urlParams;
-            $xmlString = GeneralUtility::getURL($url);
+            $xmlString  = GeneralUtility::getURL($url);
+
             if ($xmlString === false) {
                 trigger_error('Cannot read file "' . $url . '"', E_USER_ERROR);
                 return false;
             }
-            $offset = strpos($xmlString, "\r\n\r\n");
-            $header = substr($xmlString, 0, $offset);
-            $match = null;
-
-            if (!$header || !preg_match('/^Content-Type:\s+([^;]+)(?:;\s*charset=(.*))?/im', $header, $match)) {
-                // error parsing the response
-            } else {
-                if (!in_array(strtolower($match[1]), array_map('strtolower', $accept['type']))) {
-                    // type not accepted
-                }
-                $encoding = trim($match[2], '"\'');
-            }
-
-            $xmlString = substr($xmlString, $offset + 4);
 
             if (!$encoding) {
                 if (preg_match('/^<\?xml\s+version=(?:"[^"]*"|\'[^\']*\')\s+encoding=("[^"]*"|\'[^\']*\')/s', $xmlString, $match)) {
@@ -173,15 +176,24 @@ class BibleWebApi extends BibleApi
     * @param string $message Error message
     *
     * @return	string		Standard output
-    */
-    public function standardOutput ($message)
+    */  
+    public function standardOutput ($message, $conf)
     {
         $cObj = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class);
+            
+        $typoScriptArray = 
+            [
+                'cObject' => $conf['standard'],
+                'cObject.' => $conf['standard.']
+            ];
+
         $out =
             $cObj->stdWrap(
-                $this->extConf['standard'] . ' ' . $message,
-                $this->extConf['standard.']
+                $message,
+                $typoScriptArray
             );
+
+        $out .= ' ' . $message;
         return $out;
     }
 }

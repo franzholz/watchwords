@@ -3,10 +3,10 @@
 	<file source-language="en" datatype="plaintext" original="EXT:watchwords/Resources/Private/Language/locallang_db" date="2021-03-06T14:01:53Z" product-name="watchwords">
 		<header/>
 		<body>
-			<trans-unit id="watchwords_watch.name" resname="watchwords_watch.name">
+			<trans-unit id="tx_watchwords.name" resname="tx_watchwords.name">
 				<source>Watchword</source>
 			</trans-unit>
-			<trans-unit id="watchwords_watch.description" resname="watchwords_watch.description">
+			<trans-unit id="tx_watchwords.description" resname="tx_watchwords.description">
 				<source>Add a watchword plugin.</source>
 			</trans-unit>
 		</body>

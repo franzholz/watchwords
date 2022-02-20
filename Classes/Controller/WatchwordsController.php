@@ -16,14 +16,24 @@
 namespace JambageCom\Watchwords\Controller;
 
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\TypoScript\TypoScriptService;
+
 use Psr\Http\Message\ResponseInterface;
 
 use JambageCom\Watchwords\Api\BibleWebApi;
 
 
+
 class WatchwordsController extends ActionController
 {
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     */
+    protected $configurationManager;
+
+
     /**
      * Index Action
      *
@@ -36,5 +46,44 @@ class WatchwordsController extends ActionController
         $api->getWatchwordsFromBiblegateway($watchword, $this->settings);
         $this->view->assign('watchword', $watchword);
    }
+
+    /**
+     * Injects the Configuration Manager and is initializing the framework settings
+     *
+     * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager Instance of the Configuration Manager
+     */
+    public function injectConfigurationManager(
+        \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
+    ) {
+        $typoScriptService = GeneralUtility::makeInstance(TypoScriptService::class);
+
+        $this->configurationManager = $configurationManager;
+
+        $tsSettings = $this->configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
+            'Watchwords',
+            'Watchwords_Watch'
+        );
+
+        $provedSettings = 
+            $this->configurationManager->getConfiguration(
+                \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
+            );
+
+        $propertiesNotAllowedViaFlexForms = ['bibleVersion', 'timeOffset', 'testFile'];
+        foreach ($propertiesNotAllowedViaFlexForms as $property) {
+            if (isset($tsSettings['settings'][$property])) {
+                $provedSettings[$property] = $tsSettings['settings'][$property];
+            }
+        }
+
+        // Use stdWrap for given defined settings
+        if (isset($tsSettings['instructions']) && !empty($tsSettings['instructions'])) {
+            $instructionsArray = $typoScriptService->convertPlainArrayToTypoScriptArray($tsSettings['instructions']);
+            $provedSettings = array_merge($provedSettings, $instructionsArray);
+        }
+        
+        $this->settings = $provedSettings;
+    }
 }
 
