@@ -16,10 +16,8 @@
 namespace JambageCom\Watchwords\Api;
 
 
-use TYPO3\CMS\Core\LinkHandling\FileLinkHandler;
-use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\LinkHandling\LinkService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 
 
 class BibleWebApi extends BibleApi
@@ -54,8 +52,12 @@ class BibleWebApi extends BibleApi
 
         $out['copyright'] = $xml->channel->title;
         $out['license'] = $xml->channel->link;
-        $out['bibleLink'] = $xml->channel->item->guid;
-        $out['verseSource'] = $xml->channel->item->title;
+        $out['bibleLink'] = $out['verseSource'] = '';
+
+        if (isset($xml->channel->item)) {
+            $out['bibleLink'] = $xml->channel->item->guid;
+            $out['verseSource'] = $xml->channel->item->title;
+        }
 
             // Yes, this is ugly... but it works! :-)
         $split1 = explode('&ldquo;', $xmlString);
@@ -135,11 +137,18 @@ class BibleWebApi extends BibleApi
         }
 
         if ($paramTestFile) {
-            $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
-            $defaultStorage = $storageRepository->getDefaultStorage();
-            
-            $fileInfo = $defaultStorage->getFileByIdentifier($paramTestFile);
-            $xmlString = GeneralUtility::getURL($paramTestFile);
+            $linkService = GeneralUtility::makeInstance(LinkService::class);
+            $fileInfo = $linkService->resolve($paramTestFile);
+
+            if (
+                is_array($fileInfo) && 
+                isset($fileInfo['type']) &&
+                $fileInfo['type'] == 'file' &&
+                isset($fileInfo['file']) &&
+                $fileInfo['file'] instanceof \TYPO3\CMS\Core\Resource\FileInterface
+            ) {
+                $xmlString = $fileInfo['file']->getContents();
+            }
         } else {
             $accept = [
                 'type' => ['application/rss+xml', 'application/xml', 'application/rdf+xml', 'text/xml'],
@@ -155,18 +164,19 @@ class BibleWebApi extends BibleApi
                 return false;
             }
 
-            if (!$encoding) {
-                if (preg_match('/^<\?xml\s+version=(?:"[^"]*"|\'[^\']*\')\s+encoding=("[^"]*"|\'[^\']*\')/s', $xmlString, $match)) {
-                    $encoding = trim($match[1], '"\'');
-                }
-            }
-
             // if the xml is fetched from remote, store it in the cache
             if ($xmlString != '') {
                 $ident = 'tx_watchwords';
                 $contentHashCache->set($hashKey, $xmlString, ['ident_' . $ident], (int) 0);
             }
         }
+
+        if (!$encoding) {
+            if (preg_match('/^<\?xml\s+version=(?:"[^"]*"|\'[^\']*\')\s+encoding=("[^"]*"|\'[^\']*\')/s', $xmlString, $match)) {
+                $encoding = trim($match[1], '"\'');
+            }
+        }
+
 
         return ['charset' => $encoding, 'xml' => $xmlString];
     }

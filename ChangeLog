@@ -1,3 +1,7 @@
+
+2022-02-21  Franz Holzinger  <franz@ttproducts.de>
+    * Make usage of the class TYPO3\CMS\Core\LinkHandling\LinkService in order to read in the test file contents.
+
 2022-02-20  Franz Holzinger  <franz@ttproducts.de>
     * changes: read the XML string from the WEB API
     * changes: Setup and language codes
