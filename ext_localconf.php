@@ -7,12 +7,13 @@ call_user_func(
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
             'Watchwords',
             'Watch',
+            // controller-action combinations: The first is the default one.
             [
                 \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
             ],
             // non-cacheable actions
             [
-                \JambageCom\Watchwords\Controller\WatchwordsController::class => ''
+                \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
             ]
         );
 

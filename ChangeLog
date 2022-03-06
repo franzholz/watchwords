@@ -1,4 +1,7 @@
 
+2022-03-06  Franz Holzinger  <franz@ttproducts.de>
+    * Final version after test with insertion of plugin by setup for every page.
+
 2022-02-21  Franz Holzinger  <franz@ttproducts.de>
     * Make usage of the class TYPO3\CMS\Core\LinkHandling\LinkService in order to read in the test file contents.
 
