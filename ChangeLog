@@ -1,3 +1,5 @@
+2022-03-18  Franz Holzinger  <franz@ttproducts.de>
+    * Adapt the language files to the requirements for the crowdin translation server.
 
 2022-03-06  Franz Holzinger  <franz@ttproducts.de>
     * Final version after test with insertion of plugin by setup for every page.

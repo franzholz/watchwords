@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:watchwords/Resources/Private/Language/locallang_db" date="2021-03-06T14:01:53Z" product-name="watchwords">
-		<header/>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:watchwords/Resources/Private/Language/locallang_db.xlf" date="2022-03-18T16:30:00Z" product-name="watchwords">
+	<header/>
 		<body>
 			<trans-unit id="tx_watchwords.name" resname="tx_watchwords.name">
 				<source>Watchword</source>
