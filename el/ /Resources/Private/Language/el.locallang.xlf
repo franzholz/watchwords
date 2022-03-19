@@ -3,12 +3,14 @@
   <file source-language="en" datatype="plaintext" original="EXT:watchwords/Resources/Private/Language/locallang.xlf" date="2022-03-18T16:30:00Z" product-name="watchwords" target-language="el">
     <header/>
     <body>
-      <trans-unit id="pi1_flexform.general" xml:space="preserve">
-				<source>General Settings</source>
-			<target state="needs-translation">General Settings</target></trans-unit>
-      <trans-unit id="pi1_flexform.language" xml:space="preserve">
-				<source>Watchword-Language</source>
-			<target state="needs-translation">Watchword-Language</target></trans-unit>
+      <trans-unit id="pi1_flexform.general">
+        <source>General Settings</source>
+        <target state="needs-translation">General Settings</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language">
+        <source>Watchword-Language</source>
+        <target state="needs-translation">Watchword-Language</target>
+      </trans-unit>
       <trans-unit id="pi1_flexform.timeOffset">
         <source>Time offset in hours</source>
         <target state="needs-translation">Time offset in hours</target>
@@ -25,171 +27,226 @@
         <source>Choose a test File!</source>
         <target state="needs-translation">Choose a test File!</target>
       </trans-unit>
-      <trans-unit id="pi1_flexform.language.I.default" xml:space="preserve">
-				<source>(Default)</source>
-			<target state="needs-translation">(Default)</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.AF" xml:space="preserve">
-				<source>Afrikaans</source>
-			<target state="needs-translation">Afrikaans</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.AR" xml:space="preserve">
-				<source>Arabic</source>
-			<target state="needs-translation">Arabic</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.CS" xml:space="preserve">
-				<source>Czech</source>
-			<target state="needs-translation">Czech</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.DE" xml:space="preserve">
-				<source>German</source>
-			<target state="needs-translation">German</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.EN" xml:space="preserve">
-				<source>English</source>
-			<target state="needs-translation">English</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.ES" xml:space="preserve">
-				<source>Spanish</source>
-			<target state="needs-translation">Spanish</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.FR" xml:space="preserve">
-				<source>French</source>
-			<target state="needs-translation">French</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.IT" xml:space="preserve">
-				<source>Italian</source>
-			<target state="needs-translation">Italian</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.NL" xml:space="preserve">
-				<source>Dutch</source>
-			<target state="needs-translation">Dutch</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.NO" xml:space="preserve">
-				<source>Norwegian</source>
-			<target state="needs-translation">Norwegian</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.PT" xml:space="preserve">
-				<source>Portugese</source>
-			<target state="needs-translation">Portugese</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.RO" xml:space="preserve">
-				<source>Romanian</source>
-			<target state="needs-translation">Romanian</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.RU" xml:space="preserve">
-				<source>Russian</source>
-			<target state="needs-translation">Russian</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.TR" xml:space="preserve">
-				<source>Turkish</source>
-			<target state="needs-translation">Turkish</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.VI" xml:space="preserve">
-				<source>Vietnamese</source>
-			<target state="needs-translation">Vietnamese</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.ZH-CN" xml:space="preserve">
-				<source>Chinese (GB2312)</source>
-			<target state="needs-translation">Chinese (GB2312)</target></trans-unit>
-      <trans-unit id="pi1_flexform.language.I.ZH-ZW" xml:space="preserve">
-				<source>Chinese (Big5)</source>
-			<target state="needs-translation">Chinese (Big5)</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion" xml:space="preserve">
-				<source>Bible Version</source>
-			<target state="needs-translation">Bible Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.1" xml:space="preserve">
-				<source>Albanian: Albanian Bible</source>
-			<target state="needs-translation">Albanian: Albanian Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.21" xml:space="preserve">
-				<source>Bulgarian: Bulgarian Bible</source>
-			<target state="needs-translation">Bulgarian: Bulgarian Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.80" xml:space="preserve">
-				<source>Chinese (Simplified): Chinese Union Version</source>
-			<target state="needs-translation">Chinese (Simplified): Chinese Union Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.22" xml:space="preserve">
-				<source>Chinese (Traditional): Chinese Union Version</source>
-			<target state="needs-translation">Chinese (Traditional): Chinese Union Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.11" xml:space="preserve">
-				<source>Danish: Dette er Biblen på dansk</source>
-			<target state="needs-translation">Danish: Dette er Biblen på dansk</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.8" xml:space="preserve">
-				<source>English: American Standard Version</source>
-			<target state="needs-translation">English: American Standard Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.16" xml:space="preserve">
-				<source>English: Darby Translation</source>
-			<target state="needs-translation">English: Darby Translation</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.47" xml:space="preserve">
-				<source>English: English Standard Version</source>
-			<target state="needs-translation">English: English Standard Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.9" xml:space="preserve">
-				<source>English: King James Version</source>
-			<target state="needs-translation">English: King James Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.31" xml:space="preserve">
-				<source>English: New International Version</source>
-			<target state="needs-translation">English: New International Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.15" xml:space="preserve">
-				<source>English: Young's Literal Translation</source>
-			<target state="needs-translation">English: Young's Literal Translation</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.2" xml:space="preserve">
-				<source>French: Louis Segond</source>
-			<target state="needs-translation">French: Louis Segond</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.10" xml:space="preserve">
-				<source>German: Luther Bibel 1545</source>
-			<target state="needs-translation">German: Luther Bibel 1545</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.69" xml:space="preserve">
-				<source>Greek: 1550 Stephanus New Testament</source>
-			<target state="needs-translation">Greek: 1550 Stephanus New Testament</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.68" xml:space="preserve">
-				<source>Greek: 1881 Westcott-Hort New Testament</source>
-			<target state="needs-translation">Greek: 1881 Westcott-Hort New Testament</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.70" xml:space="preserve">
-				<source>Greek: 1894 Scrivener New Testament</source>
-			<target state="needs-translation">Greek: 1894 Scrivener New Testament</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.23" xml:space="preserve">
-				<source>Haïtian Creole: Haïtian Creole Version</source>
-			<target state="needs-translation">Haïtian Creole: Haïtian Creole Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.81" xml:space="preserve">
-				<source>Hebrew: The Westminster Leningrad Codex</source>
-			<target state="needs-translation">Hebrew: The Westminster Leningrad Codex</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.17" xml:space="preserve">
-				<source>Hungarian: Hungarian Kairoli</source>
-			<target state="needs-translation">Hungarian: Hungarian Kairoli</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.18" xml:space="preserve">
-				<source>Icelandic: Icelandic Bible</source>
-			<target state="needs-translation">Icelandic: Icelandic Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.3" xml:space="preserve">
-				<source>Italian: Conferenza Episcopale Italiana</source>
-			<target state="needs-translation">Italian: Conferenza Episcopale Italiana</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.20" xml:space="preserve">
-				<source>Korean: Korean Bible</source>
-			<target state="needs-translation">Korean: Korean Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.4" xml:space="preserve">
-				<source>Latin: Biblia Sacra Vulgata</source>
-			<target state="needs-translation">Latin: Biblia Sacra Vulgata</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.24" xml:space="preserve">
-				<source>Maori: Maori Bible</source>
-			<target state="needs-translation">Maori: Maori Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.5" xml:space="preserve">
-				<source>Norwegian: Det Norsk Bibelselskap 1930</source>
-			<target state="needs-translation">Norwegian: Det Norsk Bibelselskap 1930</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.12" xml:space="preserve">
-				<source>Polish: Biblia Tysiaclecia</source>
-			<target state="needs-translation">Polish: Biblia Tysiaclecia</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.25" xml:space="preserve">
-				<source>Portugese: João Ferreira de Almeida Atualizada</source>
-			<target state="needs-translation">Portugese: João Ferreira de Almeida Atualizada</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.14" xml:space="preserve">
-				<source>Romanian: Romanian</source>
-			<target state="needs-translation">Romanian: Romanian</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.13" xml:space="preserve">
-				<source>Russian: Russian Synodal Version</source>
-			<target state="needs-translation">Russian: Russian Synodal Version</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.42" xml:space="preserve">
-				<source>Spanish: Nueva Versión Internacional</source>
-			<target state="needs-translation">Spanish: Nueva Versión Internacional</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.6" xml:space="preserve">
-				<source>Spanish: Reina-Valera Antigua</source>
-			<target state="needs-translation">Spanish: Reina-Valera Antigua</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.7" xml:space="preserve">
-				<source>Swedish: Svenska 1917</source>
-			<target state="needs-translation">Swedish: Svenska 1917</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.27" xml:space="preserve">
-				<source>Ukrainian: Ukrainian Bible</source>
-			<target state="needs-translation">Ukrainian: Ukrainian Bible</target></trans-unit>
-      <trans-unit id="pi1_flexform.bibleVersion.I.19" xml:space="preserve">
-				<source>Vietnamese: 1934 Vietnamese Bible</source>
-			<target state="needs-translation">Vietnamese: 1934 Vietnamese Bible</target></trans-unit>
-      <trans-unit id="tt_content.list_type_pi1" xml:space="preserve">
-				<source>Display Watchword</source>
-			<target state="needs-translation">Display Watchword</target></trans-unit>
-      <trans-unit id="tt_content.wizard_description" xml:space="preserve">
-				<source>Adds a daily changing Christian Watchword.</source>
-			<target state="needs-translation">Adds a daily changing Christian Watchword.</target></trans-unit>
+      <trans-unit id="pi1_flexform.language.I.default">
+        <source>(Default)</source>
+        <target state="needs-translation">(Default)</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.AF">
+        <source>Afrikaans</source>
+        <target state="needs-translation">Afrikaans</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.AR">
+        <source>Arabic</source>
+        <target state="needs-translation">Arabic</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.CS">
+        <source>Czech</source>
+        <target state="needs-translation">Czech</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.DE">
+        <source>German</source>
+        <target state="needs-translation">German</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.EN">
+        <source>English</source>
+        <target state="needs-translation">English</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.ES">
+        <source>Spanish</source>
+        <target state="needs-translation">Spanish</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.FR">
+        <source>French</source>
+        <target state="needs-translation">French</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.IT">
+        <source>Italian</source>
+        <target state="needs-translation">Italian</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.NL">
+        <source>Dutch</source>
+        <target state="needs-translation">Dutch</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.NO">
+        <source>Norwegian</source>
+        <target state="needs-translation">Norwegian</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.PT">
+        <source>Portugese</source>
+        <target state="needs-translation">Portugese</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.RO">
+        <source>Romanian</source>
+        <target state="needs-translation">Romanian</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.RU">
+        <source>Russian</source>
+        <target state="needs-translation">Russian</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.TR">
+        <source>Turkish</source>
+        <target state="needs-translation">Turkish</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.VI">
+        <source>Vietnamese</source>
+        <target state="needs-translation">Vietnamese</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.ZH-CN">
+        <source>Chinese (GB2312)</source>
+        <target state="needs-translation">Chinese (GB2312)</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.language.I.ZH-ZW">
+        <source>Chinese (Big5)</source>
+        <target state="needs-translation">Chinese (Big5)</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion">
+        <source>Bible Version</source>
+        <target state="needs-translation">Bible Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.1">
+        <source>Albanian: Albanian Bible</source>
+        <target state="needs-translation">Albanian: Albanian Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.21">
+        <source>Bulgarian: Bulgarian Bible</source>
+        <target state="needs-translation">Bulgarian: Bulgarian Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.80">
+        <source>Chinese (Simplified): Chinese Union Version</source>
+        <target state="needs-translation">Chinese (Simplified): Chinese Union Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.22">
+        <source>Chinese (Traditional): Chinese Union Version</source>
+        <target state="needs-translation">Chinese (Traditional): Chinese Union Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.11">
+        <source>Danish: Dette er Biblen på dansk</source>
+        <target state="needs-translation">Danish: Dette er Biblen på dansk</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.8">
+        <source>English: American Standard Version</source>
+        <target state="needs-translation">English: American Standard Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.16">
+        <source>English: Darby Translation</source>
+        <target state="needs-translation">English: Darby Translation</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.47">
+        <source>English: English Standard Version</source>
+        <target state="needs-translation">English: English Standard Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.9">
+        <source>English: King James Version</source>
+        <target state="needs-translation">English: King James Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.31">
+        <source>English: New International Version</source>
+        <target state="needs-translation">English: New International Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.15">
+        <source>English: Young's Literal Translation</source>
+        <target state="needs-translation">English: Young's Literal Translation</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.2">
+        <source>French: Louis Segond</source>
+        <target state="needs-translation">French: Louis Segond</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.10">
+        <source>German: Luther Bibel 1545</source>
+        <target state="needs-translation">German: Luther Bibel 1545</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.69">
+        <source>Greek: 1550 Stephanus New Testament</source>
+        <target state="needs-translation">Greek: 1550 Stephanus New Testament</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.68">
+        <source>Greek: 1881 Westcott-Hort New Testament</source>
+        <target state="needs-translation">Greek: 1881 Westcott-Hort New Testament</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.70">
+        <source>Greek: 1894 Scrivener New Testament</source>
+        <target state="needs-translation">Greek: 1894 Scrivener New Testament</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.23">
+        <source>Haïtian Creole: Haïtian Creole Version</source>
+        <target state="needs-translation">Haïtian Creole: Haïtian Creole Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.81">
+        <source>Hebrew: The Westminster Leningrad Codex</source>
+        <target state="needs-translation">Hebrew: The Westminster Leningrad Codex</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.17">
+        <source>Hungarian: Hungarian Kairoli</source>
+        <target state="needs-translation">Hungarian: Hungarian Kairoli</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.18">
+        <source>Icelandic: Icelandic Bible</source>
+        <target state="needs-translation">Icelandic: Icelandic Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.3">
+        <source>Italian: Conferenza Episcopale Italiana</source>
+        <target state="needs-translation">Italian: Conferenza Episcopale Italiana</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.20">
+        <source>Korean: Korean Bible</source>
+        <target state="needs-translation">Korean: Korean Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.4">
+        <source>Latin: Biblia Sacra Vulgata</source>
+        <target state="needs-translation">Latin: Biblia Sacra Vulgata</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.24">
+        <source>Maori: Maori Bible</source>
+        <target state="needs-translation">Maori: Maori Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.5">
+        <source>Norwegian: Det Norsk Bibelselskap 1930</source>
+        <target state="needs-translation">Norwegian: Det Norsk Bibelselskap 1930</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.12">
+        <source>Polish: Biblia Tysiaclecia</source>
+        <target state="needs-translation">Polish: Biblia Tysiaclecia</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.25">
+        <source>Portugese: João Ferreira de Almeida Atualizada</source>
+        <target state="needs-translation">Portugese: João Ferreira de Almeida Atualizada</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.14">
+        <source>Romanian: Romanian</source>
+        <target state="needs-translation">Romanian: Romanian</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.13">
+        <source>Russian: Russian Synodal Version</source>
+        <target state="needs-translation">Russian: Russian Synodal Version</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.42">
+        <source>Spanish: Nueva Versión Internacional</source>
+        <target state="needs-translation">Spanish: Nueva Versión Internacional</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.6">
+        <source>Spanish: Reina-Valera Antigua</source>
+        <target state="needs-translation">Spanish: Reina-Valera Antigua</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.7">
+        <source>Swedish: Svenska 1917</source>
+        <target state="needs-translation">Swedish: Svenska 1917</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.27">
+        <source>Ukrainian: Ukrainian Bible</source>
+        <target state="needs-translation">Ukrainian: Ukrainian Bible</target>
+      </trans-unit>
+      <trans-unit id="pi1_flexform.bibleVersion.I.19">
+        <source>Vietnamese: 1934 Vietnamese Bible</source>
+        <target state="needs-translation">Vietnamese: 1934 Vietnamese Bible</target>
+      </trans-unit>
+      <trans-unit id="tt_content.list_type_pi1">
+        <source>Display Watchword</source>
+        <target state="needs-translation">Display Watchword</target>
+      </trans-unit>
+      <trans-unit id="tt_content.wizard_description">
+        <source>Adds a daily changing Christian Watchword.</source>
+        <target state="needs-translation">Adds a daily changing Christian Watchword.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
