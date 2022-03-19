@@ -241,7 +241,7 @@
       </trans-unit>
       <trans-unit id="tt_content.list_type_pi1">
         <source>Display Watchword</source>
-        <target state="needs-translation">Display Watchword</target>
+        <target state="translated">Vis Bibelord</target>
       </trans-unit>
       <trans-unit id="tt_content.wizard_description">
         <source>Adds a daily changing Christian Watchword.</source>
