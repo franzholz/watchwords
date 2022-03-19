@@ -9,7 +9,7 @@
       </trans-unit>
       <trans-unit id="pi1_flexform.language">
         <source>Watchword-Language</source>
-        <target state="needs-translation">Watchword-Language</target>
+        <target state="translated">Bibelord-språk</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.timeOffset">
         <source>Time offset in hours</source>
@@ -245,7 +245,7 @@
       </trans-unit>
       <trans-unit id="tt_content.wizard_description">
         <source>Adds a daily changing Christian Watchword.</source>
-        <target state="needs-translation">Adds a daily changing Christian Watchword.</target>
+        <target state="translated">Viser ett nytt Bibelord hver dag</target>
       </trans-unit>
     </body>
   </file>
