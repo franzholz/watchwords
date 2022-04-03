@@ -45,21 +45,21 @@ class WizardIcon
         $iconPath = 'Resources/Public/Icons/';
         $languagePath = '/Resources/Private/Language/';
 
-        $type = 'watchwords_pi1';
+        $type = 'watchwords_watch';
         $params = '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $type;
-        $wizardItem = array(
-            'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . $languagePath . 'locallang.xlf:tt_content.list_type_pi1'),
+        $wizardItem = [
+            'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . $languagePath . 'locallang.xlf:tt_content.list_type'),
             'description' => $GLOBALS['LANG']->sL('LLL:EXT:' . $extensionKey . $languagePath . 'locallang.xlf:tt_content.wizard_description'),
             'params' => $params
-        );
+        ];
 
         $iconIdentifier = 'extensions-watchwords-' . $type . '-wizard';
         $iconRegistry->registerIcon(
             $iconIdentifier,
-            'TYPO3\\CMS\\Core\\Imaging\\IconProvider\\BitmapIconProvider',
-            array(
-                'source' => 'EXT:' . $extensionKey . '/' . $iconPath . 'watchwords.gif',
-            )
+            \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+            [
+                'source' => 'EXT:' . $extensionKey . '/' . $iconPath . 'user_plugin_watch.svg',
+            ]
         );
         $wizardItem['iconIdentifier'] = $iconIdentifier;
         $wizardItems['plugins_' . $type] = $wizardItem;
