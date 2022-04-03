@@ -5,7 +5,7 @@
     <body>
       <trans-unit id="pi1_flexform.general">
         <source>General Settings</source>
-        <target state="needs-translation">General Settings</target>
+        <target state="translated">Allgemeine Einstellungen</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.language">
         <source>Watchword-Language</source>
@@ -13,19 +13,19 @@
       </trans-unit>
       <trans-unit id="pi1_flexform.timeOffset">
         <source>Time offset in hours</source>
-        <target state="needs-translation">Time offset in hours</target>
+        <target state="translated">Zeitverschiebung in Stunden</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.testFile">
         <source>Test File </source>
-        <target state="needs-translation">Test File </target>
+        <target state="translated">Testdatei </target>
       </trans-unit>
       <trans-unit id="pi1_flexform.testFile.description">
         <source>Choose a XML News Feed file as you can download it from https://www.biblegateway.com/votd/get/?format=atom . See https://www.biblegateway.com/usage/ .</source>
-        <target state="needs-translation">Choose a XML News Feed file as you can download it from https://www.biblegateway.com/votd/get/?format=atom . See https://www.biblegateway.com/usage/ .</target>
+        <target state="translated">Wählen Sie eine XML-Newsfeed-Datei aus, die Sie unter https://www.biblegateway.com/votd/get/?format=atom herunterladen können. Siehe https://www.biblegateway.com/usage/ .</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.testFile.formlabel">
         <source>Choose a test File!</source>
-        <target state="needs-translation">Choose a test File!</target>
+        <target state="translated">Wählen Sie eine Test-Datei!</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.language.I.default">
         <source>(Default)</source>
