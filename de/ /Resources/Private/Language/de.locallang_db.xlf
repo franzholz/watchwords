@@ -9,7 +9,7 @@
       </trans-unit>
       <trans-unit id="tx_watchwords.description" resname="tx_watchwords.description">
         <source>Add a watchword plugin.</source>
-        <target state="needs-translation">Add a watchword plugin.</target>
+        <target state="translated">Ein Watchwort-Plugin hinzufügen.</target>
       </trans-unit>
     </body>
   </file>
