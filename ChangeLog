@@ -1,3 +1,7 @@
+2022-05-26  Franz Holzinger  <franz@ttproducts.de>
+    * Remove the record storage page browser and recursive settings from the plugin. 
+    This extension does not have any records.
+
 2022-03-18  Franz Holzinger  <franz@ttproducts.de>
     * Adapt the language files to the requirements for the crowdin translation server.
 
