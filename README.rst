@@ -11,7 +11,7 @@ Configuration
 
 Use the constant editor. Or insert a plugin and use the flexform.
 
-You can also show the watchwords on every page by a marker of your main
+You can also show the watchwords on every page by a marker inserted into your main
 page template.
 
 example:

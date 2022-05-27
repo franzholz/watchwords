@@ -8,7 +8,5 @@ if (!defined ('WATCHWORDS_EXT')) {
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
     WATCHWORDS_EXT,
     'Configuration/TypoScript',
-    'Watchwords'
+    'Display daily Christian Watchwords'
 );
-
-

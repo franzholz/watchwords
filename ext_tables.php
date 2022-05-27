@@ -9,11 +9,5 @@ call_user_func(
             'Watch',
             'Watchword'
         );
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-            'watchwords',
-            'Configuration/TypoScript',
-            'Display daily Christian Watchwords'
-        );
     }
 );
