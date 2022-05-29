@@ -14,5 +14,10 @@
     },
     "replace": {
         "typo3-ter/watchwords": "self.version"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "watchwords"
+        }
     }
 }
