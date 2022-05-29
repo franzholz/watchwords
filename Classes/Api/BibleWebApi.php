@@ -34,9 +34,9 @@ class BibleWebApi extends BibleApi
             // Get the watchwords
         $result =
             $this->getWatchwords(
-                $extConf['bibleVersion'],
-                $extConf['timeOffset'],
-                $extConf['testFile']
+                $extConf['bibleVersion'] ?? '',
+                $extConf['timeOffset'] ?? '',
+                $extConf['testFile'] ?? ''
             );
 
         $xmlString = $result['xml'];

@@ -70,8 +70,8 @@ class WatchwordsController extends ActionController
                 \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
             );
 
-        $propertiesNotAllowedViaFlexForms = ['bibleVersion', 'timeOffset', 'testFile'];
-        foreach ($propertiesNotAllowedViaFlexForms as $property) {
+        $propertiesViaFlexForms = ['bibleVersion', 'timeOffset', 'testFile'];
+        foreach ($propertiesViaFlexForms as $property) {
             if (isset($tsSettings['settings'][$property])) {
                 $provedSettings[$property] = $tsSettings['settings'][$property];
             }
