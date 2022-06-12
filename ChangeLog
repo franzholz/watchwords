@@ -1,3 +1,6 @@
+2022-06-12  Franz Holzinger  <franz@ttproducts.de>
+    * Test Sphinx Documentation Rendering
+
 2022-05-26  Franz Holzinger  <franz@ttproducts.de>
     * Remove the record storage page browser and recursive settings from the plugin. 
     This extension does not have any records.
