@@ -27,6 +27,6 @@ Remove it if it is not relevant.
    :alt: Introduction Package
    :width: 300px
 
-   Introduction Package after installation (caption of the image).
+   Introduction Package after installation
 
 How the Frontend of the Introduction Package looks like after installation (legend of the image).

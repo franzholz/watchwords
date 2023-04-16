@@ -36,7 +36,6 @@ The extension folder :file:`Resources/Public/Examples/` already has an example f
 
 :file:`Resources/Public/Examples/Verse_Feb_06_2022.xml`
 
- don't have administrative access to the installation.
 
 .. tip::
 

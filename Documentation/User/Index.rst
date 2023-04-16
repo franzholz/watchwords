@@ -55,7 +55,7 @@ as a neutral TYPO3 CMS instance.
    :width: 500px
    :alt: Backend view
 
-   Default Backend view (caption of the image)
+   Default Backend view
 
    The Backend view of TYPO3 after the user has clicked on module "Page". (legend of the image)
 

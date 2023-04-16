@@ -3,6 +3,7 @@
 call_user_func(
     function ()
     {
+        $extensionKey = 'watchwords';
         $table = 'tt_content';
         $listType = 'watchwords_watch';
 
@@ -16,7 +17,7 @@ call_user_func(
         $GLOBALS['TCA'][$table]['types']['list']['subtypes_addlist'][$listType] = 'pi_flexform';
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
             $listType,
-            'FILE:EXT:watchwords/Configuration/FlexForms/Watch.xml'
+            'FILE:EXT:' . $extensionKey . '/Configuration/FlexForms/Watch.xml'
         );
         $GLOBALS['TCA'][$table]['types']['list']['subtypes_excludelist'][$listType] =
             'recursive,pages';
