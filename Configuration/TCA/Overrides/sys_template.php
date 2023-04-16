@@ -1,12 +1,10 @@
 <?php
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3') || die('Access denied.');
 
-if (!defined ('WATCHWORDS_EXT')) {
-    define('WATCHWORDS_EXT', 'watchwords');
-}
+$extensionKey = 'watchwords';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-    WATCHWORDS_EXT,
+    $extensionKey,
     'Configuration/TypoScript',
     'Display daily Christian Watchwords'
 );
