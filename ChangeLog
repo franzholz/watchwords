@@ -1,3 +1,8 @@
+
+2023-04-16  Franz Holzinger  <franz@ttproducts.de>
+    * support for TYPO3 12.x
+    * bugfix: call ExtensionUtility::registerPlugin only from Configuration/TCA/Overrides/tt_content.php .
+
 2022-06-12  Franz Holzinger  <franz@ttproducts.de>
     * Test Sphinx Documentation Rendering
 
