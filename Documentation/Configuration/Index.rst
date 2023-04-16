@@ -32,7 +32,7 @@ Bible version `bibleVersion`
 
 .. confval:: bibleVersion
 
-    :type: integer
+   :type: integer
    :Default: 31 - “English: New International Version”
    :Path: plugin.tx_watchwords.settings
    :Scope: Plugin, TypoScript Setup
@@ -195,14 +195,14 @@ Time Offset `timeOffset`
    :Default: 0
    :Path: plugin.tx_watchwords.settings
    :Scope: Plugin, TypoScript Setup
-
+    
    The timeOffset is not used. It is intended to delay a daily watchword update by this time span.
 
 
 .. _tsTestFile:
 
-Bible version `testFile`
-----------------------------
+Test file `testFile`
+--------------------
 
 .. confval:: testFile
 
