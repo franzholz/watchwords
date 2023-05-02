@@ -12,10 +12,10 @@ $EM_CONF['watchwords'] = [
     'author_email' => 'franz@ttproducts.de',
     'state' => 'stable',
     'clearCacheOnLoad' => 0,
-    'version' => '2.1.0',
+    'version' => '2.1.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.0-12.3.99'
+            'typo3' => '11.5.0-12.4.99'
         ],
         'conflicts' => [],
         'suggests' => [],

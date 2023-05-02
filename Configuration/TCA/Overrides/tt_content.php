@@ -1,10 +1,7 @@
 <?php
 
-call_user_func(
-    function ()
-    {
-        $extensionKey = 'watchwords';
-        $table = 'tt_content';
+call_user_func(function($extensionKey, $table)
+{
         $listType = 'watchwords_watch';
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
@@ -22,5 +19,6 @@ call_user_func(
         $GLOBALS['TCA'][$table]['types']['list']['subtypes_excludelist'][$listType] =
             'recursive,pages';
     }
-);
+}, 'watchwords', basename(__FILE__, '.php'));
+
 
