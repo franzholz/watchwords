@@ -4,14 +4,17 @@ TYPO3 extension watchwords
 What is does
 ------------
 
-Use this extension to show daily bible verses.
+Use this extension to show daily bible verses in multiple languages.
 
 Configuration
 -------------
 
-Use the constant editor. Or insert a plugin and use the flexform.
+Insert "Display daily Christian Watchwords (watchwords)" in the Template module setup under "Include static (from extensions)".
 
-You can also show the watchwords on every page by a marker inserted into your main
+  * Use the constant editor or the TypoScript setup. 
+  * Insert an extension plugin and use its flexform.
+
+You can show the watchwords on every page by a marker inserted into your main
 page template.
 
 example:

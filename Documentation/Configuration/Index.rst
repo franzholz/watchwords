@@ -7,14 +7,15 @@ Configuration
 =============
 
 You can configure each plugin individually in the TYPO3 backend. 
-see :ref:`for-editors`
-Alternatively and additionally you can use a setup which is valid globally.
-The plugin configuration has precedence.
+See :ref:`for-editors`
+
+Additionally you can use a setup which is valid globally.
+The plugin flexform configuration has precedence over any setup.
 
 Priorities
 ----------
 
-Several properties of this extension can be defined in different ways. For such properties, the following priorities in getting the respective values are applied:
+Several properties of this extension can be defined in different ways. For such properties the following priorities in getting the respective values are applied:
 
 Bible version
 ~~~~~~~~~~~~~
@@ -211,7 +212,13 @@ Test file `testFile`
    :Path: plugin.tx_watchwords.settings
    :Scope: Plugin, TypoScript Setup
 
-   If the test file is set, then its content will be shown instead of a daily watchword. Use a news reader and save its content into a test file. Example: :file:`/Resources/Public/Examples/Verse_Feb_06_2022.xml` .
+   If the test file is set, then its content will be shown instead of a daily watchword. 
+   Use a news reader and save its content into a test file. 
+   
+   Example
+   ~~~~~~~
+
+   See inside of watchword: :file:`/Resources/Public/Examples/Verse_Feb_06_2022.xml` .
 
    
 .. _tsStandard:
@@ -264,5 +271,5 @@ Extbase/Fluid
 
 Use the common Extbase/Fluid setup if you want to modify the template files.
 
-See :ref:`t3extbasebook:configuration`.
+See :ref:`t3coreapi:extbase_typoscript_configuration`.
 
