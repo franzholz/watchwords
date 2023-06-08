@@ -271,5 +271,5 @@ Extbase/Fluid
 
 Use the common Extbase/Fluid setup if you want to modify the template files.
 
-See :ref:`t3coreapi:extbase_typoscript_configuration`.
+See :ref:`t3tsref:plugin`.
 
