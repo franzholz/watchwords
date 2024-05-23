@@ -245,7 +245,7 @@
       </trans-unit>
       <trans-unit id="tt_content.wizard_description" resname="tt_content.wizard_description">
         <source>Adds a daily changing Christian Watchword.</source>
-        <target state="translated">Viser ett nytt Bibelord hver dag</target>
+        <target state="translated">Viser ett nytt bibelord hver dag.</target>
       </trans-unit>
     </body>
   </file>
