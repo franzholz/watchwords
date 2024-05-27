@@ -1,24 +1,33 @@
 <?php
 defined('TYPO3') || die('Access denied.');
 
+use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
+use JambageCom\Watchwords\Controller\WatchwordsController;
+
+
 call_user_func(
     function()
     {
-        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        ExtensionUtility::configurePlugin(
             'Watchwords',
             'Watch',
             // controller-action combinations: The first is the default one.
             [
-                \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
+                WatchwordsController::class => 'index'
             ],
             // non-cacheable actions
             [
-                \JambageCom\Watchwords\Controller\WatchwordsController::class => 'index'
+                WatchwordsController::class => 'index'
             ]
         );
 
         // wizards
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+        ExtensionManagementUtility::addPageTSConfig(
             'mod {
                 wizards.newContentElement.wizardItems.plugins {
                     elements {
@@ -36,10 +45,10 @@ call_user_func(
                 }
            }'
         );
-		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+		$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
         $iconRegistry->registerIcon(
             'watchwords-plugin-watch',
-            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+             SvgIconProvider::class,
             ['source' => 'EXT:watchwords/Resources/Public/Icons/user_plugin_watch.svg']
         );
     }

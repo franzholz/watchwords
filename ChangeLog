@@ -1,3 +1,5 @@
+2024-05-27  Franz Holzinger  <franz@ttproducts.de>
+    * only for TYPO3 12.x: Change in ExtensionManagementUtility::addPiFlexFormValue
 
 2023-04-16  Franz Holzinger  <franz@ttproducts.de>
     * support for TYPO3 12.x
@@ -7,7 +9,7 @@
     * Test Sphinx Documentation Rendering
 
 2022-05-26  Franz Holzinger  <franz@ttproducts.de>
-    * Remove the record storage page browser and recursive settings from the plugin. 
+    * Remove the record storage page browser and recursive settings from the plugin.
     This extension does not have any records.
 
 2022-03-18  Franz Holzinger  <franz@ttproducts.de>
@@ -47,7 +49,7 @@
 
 2018-06-28  Franz Holzinger  <franz@ttproducts.de>
 
-    * bugfix: set the hook headerNoCache correctly  
+    * bugfix: set the hook headerNoCache correctly
 
 2018-05-29  Franz Holzinger  <franz@ttproducts.de>
 
