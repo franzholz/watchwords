@@ -16,9 +16,12 @@
 namespace JambageCom\Watchwords\Controller;
 
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Controller\Arguments;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -26,7 +29,7 @@ use JambageCom\Watchwords\Api\BibleWebApi;
 
 
 
-class WatchwordsController extends ActionController
+class WatchwordsController extends ActionController implements SingletonInterface
 {
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
@@ -39,12 +42,14 @@ class WatchwordsController extends ActionController
      *
      * @return void
      */
-    public function indexAction()
+    public function indexAction(): ResponseInterface
     {
-        $api = $this->objectManager->get(BibleWebApi::class);
+        $api = GeneralUtility::makeInstance(BibleWebApi::class);
         $watchword = [];
         $api->getWatchwordsFromBiblegateway($watchword, $this->settings);
         $this->view->assign('watchword', $watchword);
+
+        return $this->htmlResponse();
    }
 
     /**
@@ -65,7 +70,7 @@ class WatchwordsController extends ActionController
             'Watchwords_Watch'
         );
 
-        $provedSettings = 
+        $provedSettings =
             $this->configurationManager->getConfiguration(
                 \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
             );
@@ -82,8 +87,9 @@ class WatchwordsController extends ActionController
             $instructionsArray = $typoScriptService->convertPlainArrayToTypoScriptArray($tsSettings['instructions']);
             $provedSettings = array_merge($provedSettings, $instructionsArray);
         }
-        
+
         $this->settings = $provedSettings;
+        $this->arguments = GeneralUtility::makeInstance(Arguments::class);
     }
 }
 

@@ -1,5 +1,10 @@
+
+2024-05-29  Franz Holzinger  <franz@ttproducts.de>
+    * Deprecation no. 88366: Default caching framework cache names changed
+    * Deprecation no. 92784: Extbase controller actions must return ResponseInterface
+
 2024-05-27  Franz Holzinger  <franz@ttproducts.de>
-    * only for TYPO3 12.x: Change in ExtensionManagementUtility::addPiFlexFormValue
+    * only for TYPO3 12.x now: Change in ExtensionManagementUtility::addPiFlexFormValue
 
 2023-04-16  Franz Holzinger  <franz@ttproducts.de>
     * support for TYPO3 12.x
