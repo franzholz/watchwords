@@ -43,7 +43,11 @@ class BibleWebApi extends BibleApi
         $charset = $result['charset'];
             // If no watchwords were fetched, return the standard output
         if (!$xmlString) {
-            $out['error'] = htmlspecialchars($this->standardOutput('READ ERROR', $extConf));
+            $out['error'] =
+                htmlspecialchars(
+                    $this->standardOutput('READ ERROR', $extConf),
+                    ENT_HTML5
+                );
             return false;
         }
 
@@ -62,7 +66,7 @@ class BibleWebApi extends BibleApi
             // Yes, this is ugly... but it works! :-)
         $split1 = explode('&ldquo;', $xmlString);
         $split2 = explode('&rdquo;', $split1[1]);
-        
+
         $out['verse'] = $split2[0];
 
             // Additional fields
@@ -78,7 +82,7 @@ class BibleWebApi extends BibleApi
             if (isset($extConf[$k . '.'])) {
                 $value = $cObj->stdWrap($value, $extConf[$k . '.']);
             }
-            $out[$k] = htmlspecialchars($value);
+            $out[$k] = htmlspecialchars($value, ENT_HTML5);
         }
     }
 
@@ -126,7 +130,7 @@ class BibleWebApi extends BibleApi
         // see if there is a cached XML
         $cachedXmlString = null;
         /** @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface $contentHashCache */
-        $contentHashCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('cache_hash');
+        $contentHashCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('hash');
         $cacheEntry = $contentHashCache->get($hashKey);
         if ($cacheEntry) {
             $cachedXmlString = $cacheEntry;
@@ -141,7 +145,7 @@ class BibleWebApi extends BibleApi
             $fileInfo = $linkService->resolve($paramTestFile);
 
             if (
-                is_array($fileInfo) && 
+                is_array($fileInfo) &&
                 isset($fileInfo['type']) &&
                 $fileInfo['type'] == 'file' &&
                 isset($fileInfo['file']) &&
@@ -186,12 +190,12 @@ class BibleWebApi extends BibleApi
     * @param string $message Error message
     *
     * @return	string		Standard output
-    */  
+    */
     public function standardOutput ($message, $conf)
     {
         $cObj = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class);
-            
-        $typoScriptArray = 
+
+        $typoScriptArray =
             [
                 'cObject' => $conf['standard'],
                 'cObject.' => $conf['standard.']
