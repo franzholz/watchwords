@@ -3,9 +3,9 @@
   <file source-language="en" datatype="plaintext" original="EXT:watchwords/Resources/Private/Language/locallang.xlf" date="2022-03-18T16:30:00Z" product-name="watchwords" target-language="da">
     <header/>
     <body>
-      <trans-unit id="pi1_flexform.general" resname="pi1_flexform.general">
+      <trans-unit id="pi1_flexform.general" resname="pi1_flexform.general" approved="yes">
         <source>General Settings</source>
-        <target state="needs-translation">General Settings</target>
+        <target state="final">Generelle indstillinger</target>
       </trans-unit>
       <trans-unit id="pi1_flexform.language" resname="pi1_flexform.language">
         <source>Watchword-Language</source>
