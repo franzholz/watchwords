@@ -1,3 +1,5 @@
+2024-12-01  Franz Holzinger  <franz@ttproducts.de>
+    * only for TYPO3 13.x now: injectConfigurationManager is void
 
 2024-05-29  Franz Holzinger  <franz@ttproducts.de>
     * Deprecation no. 88366: Default caching framework cache names changed

@@ -32,12 +32,6 @@ use JambageCom\Watchwords\Api\BibleWebApi;
 class WatchwordsController extends ActionController implements SingletonInterface
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     */
-    protected $configurationManager;
-
-
-    /**
      * Index Action
      *
      * @return void
@@ -59,7 +53,8 @@ class WatchwordsController extends ActionController implements SingletonInterfac
      */
     public function injectConfigurationManager(
         \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
-    ) {
+    ): void
+    {
         $typoScriptService = GeneralUtility::makeInstance(TypoScriptService::class);
 
         $this->configurationManager = $configurationManager;

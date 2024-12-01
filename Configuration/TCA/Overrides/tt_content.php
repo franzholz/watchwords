@@ -34,4 +34,3 @@ call_user_func(function($extensionKey, $table)
         ];
 }, 'watchwords', basename(__FILE__, '.php'));
 
-
