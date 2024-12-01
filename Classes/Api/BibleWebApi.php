@@ -65,7 +65,7 @@ class BibleWebApi extends BibleApi
 
             // Yes, this is ugly... but it works! :-)
         $split1 = explode('&ldquo;', $xmlString);
-        $split2 = explode('&rdquo;', $split1[1]);
+        $split2 = explode('&rdquo;', $split1[1] ?? '');
 
         $out['verse'] = $split2[0];
 
@@ -75,6 +75,9 @@ class BibleWebApi extends BibleApi
             // Trim, convert charset to metaCharset (conversion to the output charset will be done by the core)
             // and apply stdWrap to all values
         foreach ($out as $k => $v) {
+            if (!isset($v)) {
+                continue;
+            }
             $value = trim($v);
             if (!empty($charset) && mb_check_encoding($value, $charset)) {
                 $value = $charsetConverter->conv(trim($value), $charset,  'utf-8');
