@@ -1,3 +1,7 @@
+
+2025-01-03  Franz Holzinger  <franz@ttproducts.de>
+    * Deprecation no. 97126: TCEforms removed in FlexForm
+
 2024-12-01  Franz Holzinger  <franz@ttproducts.de>
     * only for TYPO3 13.x now: injectConfigurationManager is void
 
